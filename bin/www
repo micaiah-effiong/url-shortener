@@ -3,7 +3,7 @@
 /**
  * Module dependencies.
  */
-
+let db = require('../models/index');
 var app = require('../app');
 var debug = require('debug')('url-shortener:server');
 var http = require('http');
@@ -25,7 +25,9 @@ var server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port);
+db.sequelize.sync({force:false}).then(()=>{
+  server.listen(port);  
+})
 server.on('error', onError);
 server.on('listening', onListening);
 
