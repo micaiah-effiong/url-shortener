@@ -1,0 +1,25 @@
+{
+  "development": {
+    "username": null,
+    "password": null,
+    "database": "database_development",
+    "storage": "./data/database_development.sqlite",
+    "host": null,
+    "dialect": "sqlite",
+    "logging": false
+  },
+  "test": {
+    "username": null,
+    "password": null,
+    "storage": ":memory:",
+    "host": null,
+    "dialect": "sqlite",
+    "logging": false
+  },
+  "production": {
+    "use_env_variable": "DATABASE_URL",
+    "dialect": "postgres",
+    "ssl": true,
+    "logging": false
+  }
+}
