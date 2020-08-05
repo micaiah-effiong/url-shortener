@@ -27,6 +27,7 @@ router.post(
   handleAsync(async (req, res, next) => {
     console.log(req.body);
     let { slug, url } = req.body;
+    if (/[^\w\-]/i.test()) return next(Error("Invalid slug"));
     let createdLink = await link.create({ slug, url });
     res.status(201).json({
       success: true,
