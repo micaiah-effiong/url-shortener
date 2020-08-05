@@ -1,11 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title>Cut-it</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <div id="app">
+      <h1>Cut - IT</h1>
+      <p>Cut it and keep it short</p>
+
+      <form @submit.prevent="submit">
+        <label for="url">Url</label>
+        <input type="url" id="url" name="url" v-model="form.url"/>
+        <label for="slug">Slug</label>
+        <input type="slug" id="slug" name="slug" v-model="form.slug"/>
+        <input type="submit" />
+      </form>
+
+      <div v-if="form.res">{{form.res}}</div>
+    </div>
+    <script defer type="text/javascript" src="/scripts/vue.js"></script>
+    <script defer type="text/javascript" src="/scripts/main.js"></script>
   </body>
 </html>
