@@ -8,7 +8,20 @@ body {
  font-family: 'Poppins', sans-serif;
 
 }
-
+header{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px 0px;
+}
+li{
+  display: inline-block;
+  padding: 0px 10px;
+}
+.logo h2{
+  position: relative;
+  right: 198px;
+}
 
 .banner-img img{
   height: 390px;
@@ -19,6 +32,7 @@ body {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+  margin-top: 50px;
 }
 .banner-text h1{
   width: 622px;
@@ -34,23 +48,23 @@ font-size: 15px;
 padding: 16px 0px;
 }
 .banner-text #long-link{
-  /* width: 460px; */
-  padding:11px 60px ;
+  padding:11px 50px ;
+  margin-top: 60px;
+
 
 }
 .banner-text #short-link{
-  /* width: 460px; */
   padding:11px 20px ;
 
 }
 .btn button{
-  padding: 10px 10px;
+  padding: 10px 16px;
   /* border-radius: 10px; */
   background-color: #F7D075;
   border: 2px solid #F7D075;
 }
 .btn{
-  margin: 15px 0px;
+  margin: 30px 0px;
 }
 @media (max-width:768px){
   .banner-img img{
