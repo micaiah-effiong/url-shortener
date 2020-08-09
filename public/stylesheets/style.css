@@ -1,8 +1,60 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+*{
+  padding:0px;
+  margin: 0px;
 }
 
-a {
-  color: #00B7FF;
+body {
+ box-sizing: border-box;
+ font-family: 'Poppins', sans-serif;
+
+}
+
+
+.banner-img img{
+  height: 390px;
+  width: 549px;
+  max-width: 549px;
+}
+.section-banner{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.banner-text h1{
+  width: 622px;
+  font-size: 48px;
+
+}
+.banner-text{
+  padding-left: 20px;
+}
+.banner-text p{
+  width: 561px;
+font-size: 15px;
+padding: 16px 0px;
+}
+.banner-text #long-link{
+  /* width: 460px; */
+  padding:11px 60px ;
+
+}
+.banner-text #short-link{
+  /* width: 460px; */
+  padding:11px 20px ;
+
+}
+.btn button{
+  padding: 10px 10px;
+  /* border-radius: 10px; */
+  background-color: #F7D075;
+  border: 2px solid #F7D075;
+}
+.btn{
+  margin: 15px 0px;
+}
+@media (max-width:768px){
+  .banner-img img{
+    max-height: 200px;
+    max-width: 349px;
+  }
 }
