@@ -50,11 +50,12 @@ padding: 16px 0px;
 .banner-text #long-link{
   padding:11px 50px ;
   margin-top: 60px;
-
+  border: 2px solid #C4C4C4;
 
 }
 .banner-text #short-link{
   padding:11px 20px ;
+  border: 2px solid #C4C4C4;
 
 }
 .btn button{
@@ -70,5 +71,29 @@ padding: 16px 0px;
   .banner-img img{
     max-height: 200px;
     max-width: 349px;
+  }
+  .section-banner{
+    flex-direction: column-reverse;
+  }
+  .banner-text h1{
+    width: 250px;
+    font-size: 20px;
+    font-weight: 700;
+  
+  }
+  .banner-text{
+    padding-left: 20px;
+  }
+  .banner-text p{
+    width: 261px;
+  font-size: 15px;
+}
+header{
+flex-direction: column;
+}
+.logo h2{
+  text-align: center;
+  position: relative;
+  right: 0;
   }
 }
