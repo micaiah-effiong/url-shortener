@@ -25,10 +25,10 @@ router.get(
 router.post(
   "/",
   handleAsync(async (req, res, next) => {
-    console.log(req.body);
-    let { slug, url } = req.body;
-    if (/[^\w\-]/i.test()) return next(Error("Invalid slug"));
-    let createdLink = await link.create({ slug, url });
+    let { slug, url, expiresAt } = req.body;
+    expiresAt = expiresAt || new Date(Date.now() + 1000 * 60 * 60 * 24 * 30);
+    if (/[^\w\-]/i.test(slug)) return next(Error("Invalid slug"));
+    let createdLink = await link.create({ slug, url, expiresAt });
     res.status(201).json({
       success: true,
       data: createdLink,
