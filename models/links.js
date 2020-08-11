@@ -12,7 +12,6 @@ module.exports = function (sequelize, DataType) {
         },
       },
     },
-
     slug: {
       type: DataType.STRING,
       allowNull: false,
@@ -24,6 +23,11 @@ module.exports = function (sequelize, DataType) {
       unique: {
         msg: "slug already used",
       },
+    },
+    expiresAt: {
+      type: DataType.DATE,
+      allowNull: false,
+      defaultValue: new Date(Date.now() + 1000 * 60 * 60 * 24 * 30),
     },
   });
 
