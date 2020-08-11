@@ -23,6 +23,7 @@ li{
   right: 198px;
 }
 
+
 .banner-img img{
   height: 390px;
   width: 549px;
@@ -36,33 +37,46 @@ li{
 }
 .banner-text h1{
   width: 622px;
-  font-size: 48px;
+  font-size: 40px;
 
 }
 .banner-text{
-  padding-left: 20px;
+  padding-left: 45px;
 }
 .banner-text p{
   width: 561px;
-font-size: 15px;
+font-size: 13px;
 padding: 16px 0px;
 }
 .banner-text #long-link{
-  padding:11px 50px ;
+  padding:11px 20px ;
   margin-top: 60px;
   border: 2px solid #C4C4C4;
+  border-radius: 3px;
+  outline-color: transparent;
 
 }
 .banner-text #short-link{
   padding:11px 20px ;
   border: 2px solid #C4C4C4;
+  border-radius: 3px;
+  outline-color: transparent;
+}
+.btn .iconify{
+  position: absolute;
 
 }
-.btn button{
+.iconify{
+  padding-left: 14%;
+  padding-top: 10px;
+  font-size: 20px;
+}
+ button{
   padding: 10px 16px;
   /* border-radius: 10px; */
   background-color: #F7D075;
   border: 2px solid #F7D075;
+  outline-color: transparent;
 }
 .btn{
   margin: 30px 0px;
@@ -80,6 +94,11 @@ padding: 16px 0px;
     font-size: 20px;
     font-weight: 700;
   
+  }
+  .iconify{
+    padding-left: 38%;
+    padding-top: 10px;
+    font-size: 20px;
   }
   .banner-text{
     padding-left: 20px;
