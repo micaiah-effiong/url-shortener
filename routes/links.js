@@ -1,8 +1,8 @@
-var express = require("express");
-let { nanoid } = require("nanoid");
-var handleAsync = require("../handlers/async-handler");
-var { link } = require("../models/index");
-var router = express.Router();
+const express = require("express");
+const { nanoid } = require("nanoid");
+const handleAsync = require("../handlers/async-handler");
+const { link } = require("../models/index");
+const router = express.Router();
 
 router.use((req, res, next) => {
   req.fullPath = `${req.protocol}://${req.hostname}:${req.app.settings.port}${req.originalUrl}`;
@@ -13,16 +13,6 @@ router.use((req, res, next) => {
 router.get("/", function (req, res, next) {
   res.send("respond with a resource");
 });
-
-router.get(
-  "/:link",
-  handleAsync(async function (req, res, next) {
-    let originalUrl = await link.findOne({ slug: req.params.link });
-    console.log(originalUrl);
-    if (!originalUrl) return next();
-    res.redirect(originalUrl.url);
-  })
-);
 
 router.post(
   "/",
