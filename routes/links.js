@@ -1,5 +1,5 @@
 var express = require("express");
-var handleAsync = require("../handles/async-handler");
+var handleAsync = require("../handlers/async-handler");
 var { link } = require("../models/index");
 var router = express.Router();
 

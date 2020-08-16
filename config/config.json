@@ -1,25 +1,15 @@
 {
   "development": {
-    "username": null,
-    "password": null,
-    "database": "database_development",
-    "storage": "./data/database_development.sqlite",
-    "host": null,
-    "dialect": "sqlite",
-    "logging": false
+    "use_env_variable": "DATABASE_URL",
+    "useNewUrlParser": true,
+    "useUnifiedTopology": true
   },
   "test": {
-    "username": null,
-    "password": null,
-    "storage": ":memory:",
-    "host": null,
-    "dialect": "sqlite",
-    "logging": false
+    "use_env_variable": "DATABASE_URL",
+    "useNewUrlParser": true
   },
   "production": {
     "use_env_variable": "DATABASE_URL",
-    "dialect": "postgres",
-    "ssl": true,
-    "logging": false
+    "useNewUrlParser": true
   }
 }

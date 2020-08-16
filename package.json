@@ -17,6 +17,7 @@
     "dotenv": "^8.2.0",
     "ejs": "^3.0.1",
     "express": "^4.17.1",
+    "mongoose": "^5.9.28",
     "morgan": "^1.10.0",
     "nanoid": "^3.1.12",
     "pg": "^8.2.1",
@@ -27,7 +28,7 @@
   },
   "devDependencies": {
     "chai": "^4.2.0",
-    "mocha": "^8.0.1",
+    "mocha": "^8.1.1",
     "request": "^2.88.2",
     "sequelize-cli": "^5.5.1",
     "sqlite3": "^4.2.0"
