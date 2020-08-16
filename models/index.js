@@ -2,22 +2,19 @@
 
 const fs = require("fs");
 const path = require("path");
-const Sequelize = require("sequelize");
+const mongoose = require("mongoose");
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || "development";
 const config = require(__dirname + "/../config/config.json")[env];
 const db = {};
 
-let sequelize;
+let connection = mongoose.connection;
 if (config.use_env_variable) {
-  sequelize = new Sequelize(process.env[config.use_env_variable], config);
+  let connectionLink = process.env[config.use_env_variable];
+  delete config.use_env_variable;
+  mongoose.connect(connectionLink, config);
 } else {
-  sequelize = new Sequelize(
-    config.database,
-    config.username,
-    config.password,
-    config
-  );
+  mongoose.connect(config.database, config.username, config.password, config);
 }
 
 fs.readdirSync(__dirname)
@@ -27,10 +24,8 @@ fs.readdirSync(__dirname)
     );
   })
   .forEach((file) => {
-    const model = require(path.join(__dirname, file))(
-      sequelize,
-      Sequelize.DataTypes
-    );
+    const model = require(path.join(__dirname, file))(mongoose);
+    console.log(model);
     db[model.name] = model;
   });
 
@@ -40,8 +35,8 @@ Object.keys(db).forEach((modelName) => {
   }
 });
 
-db.sequelize = sequelize;
-db.Sequelize = Sequelize;
+db.connection = connection;
+db.mongoose = mongoose;
 
 /*
  * Association

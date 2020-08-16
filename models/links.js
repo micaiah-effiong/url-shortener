@@ -1,5 +1,23 @@
-module.exports = function (sequelize, DataType) {
-  let link = sequelize.define("link", {
+module.exports = function (mongoose) {
+  let schema = new mongoose.Schema({
+    url: {
+      type: String,
+      required: [true, "a link is required"],
+      validate: {
+        isUrl: {
+          msg: "link must be a valid URL",
+        },
+        notEmpty: {
+          msg: "link cannot be a empty",
+        },
+      },
+    },
+  });
+
+  return mongoose.model("link", schema);
+};
+
+/*let model = sequelize.define("link", {
     url: {
       type: DataType.STRING,
       allowNull: false,
@@ -31,5 +49,4 @@ module.exports = function (sequelize, DataType) {
     },
   });
 
-  return link;
-};
+  return model;*/
