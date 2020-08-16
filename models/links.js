@@ -1,16 +1,38 @@
-module.exports = function (mongoose) {
+module.exports = function link(mongoose) {
   let schema = new mongoose.Schema({
     url: {
       type: String,
-      required: [true, "a link is required"],
+      required: [true, "a valid url is required"],
       validate: {
-        isUrl: {
-          msg: "link must be a valid URL",
+        validator: (_url) => {
+          let isValid;
+          try {
+            new URL(_url);
+            isValid = true;
+          } catch (err) {
+            isValid = false;
+          }
+          return isValid;
         },
-        notEmpty: {
-          msg: "link cannot be a empty",
-        },
+        message: (prop) => `${prop.value} is an invalid URL`,
       },
+    },
+
+    slug: {
+      type: String,
+      required: [true, "a slug is required"],
+      unique: [true, "slug already used"],
+      validate: {
+        validator: (_slug) => {
+          return !/[^\w\-]/i.test(_slug);
+        },
+        message: (prop) => `${prop.value} is invalid`,
+      },
+    },
+    expiresAt: {
+      type: Date,
+      required: [true, "a slug is required"],
+      default: new Date(Date.now() + 1000 * 60 * 60 * 24 * 30),
     },
   });
 
