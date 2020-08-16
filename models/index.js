@@ -24,16 +24,17 @@ fs.readdirSync(__dirname)
     );
   })
   .forEach((file) => {
-    const model = require(path.join(__dirname, file))(mongoose);
-    console.log(model);
-    db[model.name] = model;
+    const modelFunc = require(path.join(__dirname, file));
+    const model = modelFunc(mongoose);
+    // console.log(modelFunc.name);
+    db[modelFunc.name] = model;
   });
 
-Object.keys(db).forEach((modelName) => {
+/*Object.keys(db).forEach((modelName) => {
   if (db[modelName].associate) {
     db[modelName].associate(db);
   }
-});
+});*/
 
 db.connection = connection;
 db.mongoose = mongoose;
