@@ -2,14 +2,19 @@
   "development": {
     "use_env_variable": "DATABASE_URL",
     "useNewUrlParser": true,
-    "useUnifiedTopology": true
+    "useUnifiedTopology": true,
+    "useCreateIndex": true
   },
   "test": {
     "use_env_variable": "DATABASE_URL",
-    "useNewUrlParser": true
+    "useNewUrlParser": true,
+    "useUnifiedTopology": true,
+    "useCreateIndex": true
   },
   "production": {
     "use_env_variable": "DATABASE_URL",
-    "useNewUrlParser": true
+    "useNewUrlParser": true,
+    "useUnifiedTopology": true,
+    "useCreateIndex": true
   }
 }
