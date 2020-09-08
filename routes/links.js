@@ -10,9 +10,27 @@ router.use((req, res, next) => {
 });
 
 /* GET links listing. */
-router.get("/", function (req, res, next) {
-  res.send("respond with a resource");
-});
+router.get(
+  "/",
+  handleAsync(async (req, res, next) => {
+    let data = await link.find();
+    res.json({
+      success: true,
+      data,
+    });
+  })
+);
+
+router.get(
+  "/:slug",
+  handleAsync(async (req, res, next) => {
+    let data = await link.findOne({ slug: req.params.slug });
+    res.json({
+      success: true,
+      data,
+    });
+  })
+);
 
 router.post(
   "/",
@@ -35,6 +53,18 @@ router.post(
     res.status(201).json({
       success: true,
       data: createdLink,
+    });
+  })
+);
+
+router.delete(
+  "/:slug",
+  handleAsync(async (req, res, next) => {
+    let data = await link.findOneAndDelete({ slug: req.params.slug });
+    console.log(data);
+    res.json({
+      success: true,
+      data,
     });
   })
 );
