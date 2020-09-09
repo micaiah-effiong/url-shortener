@@ -3,9 +3,11 @@ const { nanoid } = require("nanoid");
 const handleAsync = require("../handlers/async-handler");
 const { link } = require("../models/index");
 const router = express.Router();
-
+const url = "";
 router.use((req, res, next) => {
-  req.fullPath = `${req.protocol}://${req.hostname}:${req.app.settings.port}${req.originalUrl}`;
+  req.fullPath =
+    url ||
+    `${req.protocol}://${req.hostname}:${req.app.settings.port}${req.originalUrl}`;
   next();
 });
 
@@ -49,10 +51,12 @@ router.post(
 
     let _modelLink = new link({ slug, url, expiresAt });
     let createdLink = await _modelLink.save();
+    let newLinkObj = { ...createdLink._doc };
+    newLinkObj.short = req.fullPath + "/" + newLinkObj.slug;
 
     res.status(201).json({
       success: true,
-      data: createdLink,
+      data: newLinkObj,
     });
   })
 );
