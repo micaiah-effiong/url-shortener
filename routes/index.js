@@ -10,9 +10,12 @@ router.use("/link", links);
 router.get(
   "/:link",
   handleAsync(async function (req, res, next) {
-    let originalUrl = await link.findOne({ slug: req.params.link });
-    console.log(originalUrl);
+    const originalUrl = await link.findOne({ slug: req.params.link });
+    const hasExpired = Date.now() > new Date(originalUrl.expiresAt).getTime();
     if (!originalUrl) return next();
+    if (hasExpired) {
+      return next(Error("slug has expire"));
+    }
     res.redirect(originalUrl.url);
   })
 );
