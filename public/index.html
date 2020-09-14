@@ -4,10 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="stylesheets/style.css" />
-    <!-- <link
-            href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap"
-            rel="stylesheet"
-        /> -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap"
+      rel="stylesheet"
+    />
     <title>Url Shortener</title>
   </head>
 
@@ -34,12 +34,18 @@
           <form @submit.prevent="submit">
             <input
               type="url"
-              id="long-link"
+              class="long-link"
               name="url"
               v-model="form.url"
               placeholder="Your Link Here"
             />
-            <input type="text" id="slug" name="slug" v-model="form.slug" />
+            <input
+              type="text"
+              id="slug"
+              name="slug"
+              v-model="form.slug"
+              class="long-link"
+            />
 
             <div class="btn">
               <button type="submit">
@@ -62,12 +68,12 @@
           </form>
         </div>
         <div class="banner-img">
-          <img src="Rectangle 4.png" alt="url image" />
+          <img src="images/Rectangle 4.png" alt="url image" />
         </div>
       </section>
     </div>
 
-    <!-- <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script> -->
+    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
     <script defer type="text/javascript" src="/scripts/vue.js"></script>
     <script defer type="text/javascript" src="/scripts/main.js"></script>
   </body>
