@@ -7,7 +7,7 @@ const url = "";
 router.use((req, res, next) => {
   req.fullPath =
     url ||
-    `${req.protocol}://${req.hostname}:${req.app.settings.port}${req.originalUrl}`;
+    `${req.protocol}://${req.hostname}:${req.app.settings.port}/` /*${req.originalUrl}*/;
   next();
 });
 
@@ -51,12 +51,12 @@ router.post(
 
     let _modelLink = new link({ slug, url, expiresAt });
     let createdLink = await _modelLink.save();
-    let newLinkObj = { ...createdLink._doc };
-    newLinkObj.short = req.fullPath + "/" + newLinkObj.slug;
+    // let newLinkObj = { ...createdLink._doc };
+    data = req.fullPath + createdLink.slug;
 
     res.status(201).json({
       success: true,
-      data: newLinkObj,
+      data,
     });
   })
 );
