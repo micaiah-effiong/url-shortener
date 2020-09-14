@@ -16,6 +16,8 @@ router.get(
     if (hasExpired) {
       return next(Error("slug has expire"));
     }
+    originalUrl.clicks++;
+    await originalUrl.save();
     res.redirect(originalUrl.url);
   })
 );
