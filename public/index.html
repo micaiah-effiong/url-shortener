@@ -1,47 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="stylesheets/style.css"/>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="stylesheets/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap"
+      rel="stylesheet"
+    />
     <title>Url Shortener</title>
-</head>
+  </head>
 
-<body>
-    <header>
+  <body>
+    <div id="app">
+      <header>
         <div class="logo">
-            <h2>Reduce</h2>
+          <h2>Reduce</h2>
         </div>
         <div class="links">
-            <ul>
-                <li>About</li>
-                <li>Solution</li>
-            </ul>
+          <ul>
+            <li>About</li>
+            <li>Solution</li>
+          </ul>
         </div>
-    </header>
-    <section class="section-banner">
+      </header>
+      <section class="section-banner">
         <div class="banner-text">
-            <h1> Keep your link short and simple with reduce</h1>
-            <p>Reduce is a modern URL shortener that helps in reducing 
-                your links to a very simple form and makes it
-                very simple and easy to use </p>
+          <h1>Keep your link short and simple with reduce</h1>
+          <p>
+            Reduce is a modern URL shortener that helps in reducing your links
+            to a very simple form and makes it very simple and easy to use
+          </p>
+          <form @submit.prevent="submit">
+            <input
+              type="url"
+              class="long-link"
+              name="url"
+              v-model="form.url"
+              placeholder="Your Link Here"
+            />
+            <input
+              type="text"
+              id="slug"
+              name="slug"
+              v-model="form.slug"
+              class="long-link"
+            />
 
-            <input type="text" name="" id="long-link" placeholder=" Your Link Here ">
             <div class="btn">
-                <button type="submit"><span class="iconify" data-icon="icomoon-free:scissors" data-inline="false"></span></button>
-                <input type="text" name="" id="short-link" placeholder="New Link">
+              <button type="submit">
+                <span
+                  class="iconify"
+                  data-icon="icomoon-free:scissors"
+                  data-inline="false"
+                ></span>
+              </button>
+              <input
+                type="text"
+                name=""
+                id="short-link"
+                placeholder="New Link"
+                :value="form.res"
+                readonly
+                :title="hoverTitle"
+              />
             </div>
+          </form>
         </div>
         <div class="banner-img">
-            <img src="Rectangle 4.png" alt="url image" >
+          <img src="images/Rectangle 4.png" alt="url image" />
         </div>
-    </section>
+      </section>
+    </div>
 
     <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
     <script defer type="text/javascript" src="/scripts/vue.js"></script>
     <script defer type="text/javascript" src="/scripts/main.js"></script>
-</body>
-
+  </body>
 </html>
