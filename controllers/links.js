@@ -1,5 +1,5 @@
 const { nanoid } = require("nanoid");
-const { handleAsync } = require("../handlers/index");
+const { handleAsync, errorResponse } = require("../handlers/index");
 const { link } = require("../models/index");
 let url = "";
 
@@ -23,29 +23,29 @@ module.exports = {
     // let newLinkObj = { ...createdLink._doc };
     data = req.fullPath + createdLink.slug;
 
-    res.status(201).json({
+    return res.status(201).json({
       success: true,
       data,
     });
   }),
   getAll: handleAsync(async (req, res, next) => {
     let data = await link.find();
-    res.json({
+    return res.json({
       success: true,
       data,
     });
   }),
   getOne: handleAsync(async (req, res, next) => {
     let data = await link.findOne({ slug: req.params.slug });
-    res.json({
+    if (!data) return next(errorResponse("BAD REQUEST", 400));
+    return res.json({
       success: true,
       data,
     });
   }),
   deleteOne: handleAsync(async (req, res, next) => {
     let data = await link.findOneAndDelete({ slug: req.params.slug });
-    console.log(data);
-    res.json({
+    return res.json({
       success: true,
       data,
     });
