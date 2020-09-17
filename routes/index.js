@@ -10,14 +10,22 @@ router.use("/link", links);
 router.get(
   "/:link",
   handleAsync(async function (req, res, next) {
-    // console.log(req.headers.referer);
-    const originalUrl = await link.findOne({ slug: req.params.link });
+    let {
+      headers: { referer },
+      connection: { remoteAddress: ipAddress },
+      params: { link: slug },
+    } = req;
+    const originalUrl = await link.findOne({ slug });
     const hasExpired = Date.now() > new Date(originalUrl.expiresAt).getTime();
     if (!originalUrl) return next();
     if (hasExpired) {
       return next(Error("slug has expire"));
     }
     originalUrl.clicks++;
+    originalUrl.visit.push({
+      referer,
+      ipAddress,
+    });
     await originalUrl.save();
     res.redirect(originalUrl.url);
   })
