@@ -28,6 +28,7 @@ module.exports = {
       data,
     });
   }),
+
   getAll: handleAsync(async (req, res, next) => {
     let data = await link.find();
     return res.json({
@@ -35,6 +36,7 @@ module.exports = {
       data,
     });
   }),
+
   getOne: handleAsync(async (req, res, next) => {
     let data = await link.findOne({ slug: req.params.slug });
     if (!data) return next(errorResponse("BAD REQUEST", 400));
@@ -43,6 +45,7 @@ module.exports = {
       data,
     });
   }),
+
   deleteOne: handleAsync(async (req, res, next) => {
     let data = await link.findOneAndDelete({ slug: req.params.slug });
     return res.json({
