@@ -1,10 +1,11 @@
 {
-  "name": "cut-it",
+  "name": "Reduce",
   "version": "0.0.0",
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "nodemon ./bin/www"
+    "dev": "nodemon ./bin/www",
+    "build": "postcss public/stylesheets/tailwind.css -o public/build/tailwind.css"
   },
   "engines": {
     "node": ">=8.0.0",
