@@ -3,24 +3,11 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const expressSession = require("express-session");
-const AdminBro = require("admin-bro");
-const AdminBroMongoose = require("@admin-bro/mongoose");
-const AdminBroExpress = require("@admin-bro/express");
 
 var indexRouter = require("./routes/index");
 const { link } = require("./models/index");
 
-/*admin-bro setup*/
-AdminBro.registerAdapter(AdminBroMongoose);
 var app = express();
-const adminBro = new AdminBro({
-  databases: [],
-  rootPath: "/admin",
-  resources: [link],
-});
-
-const router = AdminBroExpress.buildRouter(adminBro);
-app.use(adminBro.options.rootPath, router);
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
