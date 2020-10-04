@@ -17,7 +17,6 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use('/static', express.static('public'))
 
 app.use("/", indexRouter);
 
@@ -35,8 +34,5 @@ app.use(function (err, req, res, next) {
   res.status(err.statusCode || 500);
   res.json({ success: false, err, msg: err.message });
 });
-
-//Serving static files
-app.use('/static', express.static('public'))
 
 module.exports = app;
