@@ -53,4 +53,28 @@ module.exports = {
       data,
     });
   }),
+
+  visit: handleAsync(async function (req, res, next) {
+    const {
+      headers: { referer },
+      connection: { remoteAddress: ipAddress },
+      params: { link: slug },
+    } = req;
+    const originalUrl = await link.findOne({ slug });
+    const hasExpired = Date.now() > new Date(originalUrl.expiresAt).getTime();
+
+    if (!originalUrl) return next();
+    if (hasExpired) {
+      return next(errorResponse("EXPIRED::URL_NO_LONGER_IN_USE", 400));
+    }
+
+    originalUrl.clicks++;
+    await originalUrl.visit.push({
+      referer,
+      ipAddress,
+    });
+
+    await originalUrl.save();
+    res.redirect(originalUrl.url);
+  }),
 };
