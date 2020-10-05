@@ -1,2 +1,27 @@
-# url-shortener
-<a href="https://www.figma.com/file/8xiru9g9nQ1xfpvAt7CmyI/URL-Shortener?node-id=60%3A2"> Link to the figma design for the url shortener</a>
+# Welcome to Reduce ⚡️
+
+### Reduce is a modern URL shortener that helps in reducing your links to a very simple form and makes it very simple and easy to use.
+
+#
+
+Steps to run the projec in your localhost
+
+1. Install nodejs v8.0.0<br>
+   <https://nodejs.org/es/>
+
+2. Install mongodb<br>
+   <https://docs.mongodb.com/guides/server/install>
+
+3. The frontend is implemented with vuejs
+
+4. After that install and configure mongodb run mongod in the terminal.
+
+5. Copy and paste the url of the local database mongo.
+
+6. After clone the project can you install node_modules.<br>
+   `npm install`
+
+7. Finaly run project with next command. 🚀<br>
+   `npm run dev`
+
+## Happy code. 🍻
