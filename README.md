@@ -14,14 +14,14 @@ Steps to run the projec in your localhost
 
 3. The frontend is implemented with vuejs
 
-- After that install and configure mongodb run mongod in the terminal.
+4. After that install and configure mongodb run mongod in the terminal.
 
-- Copy and paste the url of the local database mongo.
+5. Copy and paste the url of the local database mongo.
 
-4. After clone the project can you install node_modules.<br>
+6. After clone the project can you install node_modules.<br>
    `npm install`
 
-5. Finaly run project with next command. 🚀<br>
+7. Finaly run project with next command. 🚀<br>
    `npm run dev`
 
 ## Happy code. 🍻
