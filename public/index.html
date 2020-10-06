@@ -13,6 +13,7 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap"
       rel="stylesheet"
     />
+    <link href="stylesheets/poppins.css" rel="stylesheet" />
     <title>Url Shortener</title>
   </head>
 
@@ -100,8 +101,13 @@
                       type="text"
                       :value="form.res"
                       readonly
+                      name="dis-short"
+                      hidden
                       :title="hoverTitle"
+                      @click="copyNewLink"
                     />
+
+                    <span>{{form.copyMsg}}</span>
                   </div>
                 </form>
               </div>
@@ -124,16 +130,7 @@
           <div
             class="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row"
           >
-            <p class="text-gray-500 text-sm text-center sm:text-left">
-              © 2020 tailblocks —
-              <a
-                href="https://twitter.com/knyttneve"
-                rel="noopener noreferrer"
-                class="text-gray-600 ml-1"
-                target="_blank"
-                >@knyttneve</a
-              >
-            </p>
+            <p class="text-gray-500 text-sm text-center sm:text-left"></p>
             <span
               class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start"
             >
@@ -205,6 +202,7 @@
     </div>
 
     <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+    <script defer src="/scripts/iconify.min.js"></script>
     <script defer type="text/javascript" src="/scripts/vue.js"></script>
     <script defer type="text/javascript" src="/scripts/main.js"></script>
   </body>
