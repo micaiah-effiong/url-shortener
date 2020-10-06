@@ -67,5 +67,5 @@ module.exports = function link(mongoose) {
   };
 
   const linkSchema = new mongoose.Schema(_linkSchema, option);
-  return mongoose.model("link", linkSchema);
+  return mongoose.model("Link", linkSchema);
 };
