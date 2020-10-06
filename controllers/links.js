@@ -18,13 +18,11 @@ module.exports = {
       slug = nanoid(7); // create slug with nanoid
     }
 
-    let _modelLink = new link({ slug, url, expiresAt });
-    let createdLink = await _modelLink.save();
+    const createdLink = await link.create({ slug, url, expiresAt });
     // let newLinkObj = { ...createdLink._doc };
     data = req.fullPath + createdLink.slug;
 
     return res.status(201).json({
-      success: true,
       data,
     });
   }),
@@ -32,7 +30,6 @@ module.exports = {
   getAll: handleAsync(async (req, res, next) => {
     let data = await link.find();
     return res.json({
-      success: true,
       data,
     });
   }),
@@ -41,7 +38,6 @@ module.exports = {
     let data = await link.findOne({ slug: req.params.slug });
     if (!data) return next(errorResponse("BAD REQUEST", 400));
     return res.json({
-      success: true,
       data,
     });
   }),
@@ -49,7 +45,6 @@ module.exports = {
   deleteOne: handleAsync(async (req, res, next) => {
     let data = await link.findOneAndDelete({ slug: req.params.slug });
     return res.json({
-      success: true,
       data,
     });
   }),
