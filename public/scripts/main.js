@@ -5,10 +5,11 @@ new Vue({
       url: "",
       slug: "",
       res: "",
+      copyMsg: "",
     },
   },
   methods: {
-    submit: async function () {
+    submit: async function ({ target }) {
       let res = await fetch("/link", {
         method: "POST",
         headers: {
@@ -18,6 +19,13 @@ new Vue({
       }).then((res) => res.json());
 
       this.form.res = res.success ? res.data : "";
+      target["dis-short"].hidden = false;
+    },
+
+    copyNewLink(event) {
+      event.target.select();
+      document.execCommand("copy");
+      this.form.copyMsg = "Copied to clipboard";
     },
   },
 
