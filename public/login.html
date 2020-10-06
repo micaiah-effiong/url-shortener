@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content=" URL shortener that helps in reducing your links to"
+    />
+    <link rel="stylesheet" href="stylesheets/style.css" />
+    <link rel="stylesheet" href="build/tailwind.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <title>Url Shortener</title>
+  </head>
+  <body class="login-page">
+    <header class="text-gray-700 body-font white-bg">
+      <div
+        class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center"
+      >
+        <a
+          class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
+            ></path>
+          </svg>
+          <span class="ml-3 text-xl">Reduce</span>
+        </a>
+        <nav
+          class="md:ml-auto flex flex-wrap items-center text-base justify-center"
+        >
+          <a class="mr-5 hover:text-gray-900">About</a>
+          <a class="mr-5 hover:text-gray-900">Solution</a>
+          <a class="mr-5 hover:text-gray-900">Login</a>
+        </nav>
+      </div>
+    </header>
+    <section class="login-section-container">
+      <section class="image-container">
+        <img src="images/Rectangle 4.png" alt="" />
+      </section>
+      <section class="login-form-container">
+        <form class="login-form" action="#">
+          <input type="text" name="username" placeholder="Enter username" id="" />
+          <input type="password" placeholder="Enter password" name="password" id="" />
+          <button type="submit">Login</button>
+          <p>New User? <a href="#">Sign Up</a></p>
+        </form>
+      </section>
+    </section>
+  </body>
+</html>
