@@ -21,31 +21,23 @@ module.exports = {
     const createdLink = await link.create({ slug, url, expiresAt });
     data = req.fullPath + createdLink.slug;
 
-    return res.status(201).json({
-      data,
-    });
+    return res.status(201).json({ url: data });
   }),
 
   getAll: handleAsync(async (req, res, next) => {
     let data = await link.find();
-    return res.json({
-      data,
-    });
+    return res.json(data);
   }),
 
   getOne: handleAsync(async (req, res, next) => {
     let data = await link.findOne({ slug: req.params.slug });
     if (!data) return next(errorResponse("BAD REQUEST", 400));
-    return res.json({
-      data,
-    });
+    return res.json(data);
   }),
 
   deleteOne: handleAsync(async (req, res, next) => {
     let data = await link.findOneAndDelete({ slug: req.params.slug });
-    return res.json({
-      data,
-    });
+    return res.json(data);
   }),
 
   visit: handleAsync(async function (req, res, next) {
