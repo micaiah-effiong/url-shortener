@@ -19,7 +19,6 @@ module.exports = {
     }
 
     const createdLink = await link.create({ slug, url, expiresAt });
-    // let newLinkObj = { ...createdLink._doc };
     data = req.fullPath + createdLink.slug;
 
     return res.status(201).json({
