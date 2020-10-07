@@ -12,30 +12,23 @@ const getOne = handleAsync(async (req, res, next) => {
 
 const getAll = handleAsync(async (req, res, next) => {
   let data = await user.find();
-  return res.json({
-    data,
-  });
+  return res.json(data);
 });
 
 const create = handleAsync(async (req, res, next) => {
-  const data = await user.create(req.body);
-  return res.json({
-    data,
-  });
+  const body = { ...req.body, hash: req.body.password };
+  const data = (await user.create(body)).toPublic();
+  return res.json(data);
 });
 
 const update = handleAsync(async (req, res, next) => {
   const data = await user.findByIdAndUpdate(req.params.id, req.body);
-  return res.json({
-    data,
-  });
+  return res.json(data);
 });
 
 const deleteOne = handleAsync(async (req, res, next) => {
   const data = await user.findByIdAndDelete(req.params.id);
-  return res.json({
-    data,
-  });
+  return res.json(data);
 });
 
 module.exports = {
