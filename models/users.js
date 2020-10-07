@@ -27,21 +27,15 @@ module.exports = function user(mongoose) {
 
   // Hooks
   _schema.pre("save", async function (next) {
-    console.log(">>>", this.password);
-    next();
-  });
-
-  // virtuals
-  _schema.virtual("password").set(async function (pass) {
     try {
       const salt = await bcrypt.genSalt(10);
-      const hash = await bcrypt.hash(pass, salt);
+      const hash = await bcrypt.hash(this.hash, salt);
       this.set({ salt, hash });
-      this.save();
     } catch (err) {
       console.log(err);
       throw err;
     }
+    next();
   });
 
   // methods
@@ -52,6 +46,10 @@ module.exports = function user(mongoose) {
       console.log(err);
       throw err;
     }
+  };
+
+  _schema.methods.toPublic = function () {
+    return _.omit(this.toJSON(), "salt", "hash");
   };
 
   return model("User", _schema);
