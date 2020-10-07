@@ -10,16 +10,20 @@ new Vue({
   },
   methods: {
     submit: async function ({ target }) {
-      let res = await fetch("/link", {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify({ url: this.form.url, slug: this.form.slug }),
-      }).then((res) => res.json());
+      try {
+        let res = await fetch("/link", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify({ url: this.form.url, slug: this.form.slug }),
+        }).then((res) => res.json());
 
-      this.form.res = res.success ? res.data : "";
-      target["dis-short"].hidden = false;
+        this.form.res = res.url;
+        target["dis-short"].hidden = false;
+      } catch (err) {
+        console.error(err);
+      }
     },
 
     copyNewLink(event) {
