@@ -1,17 +1,25 @@
 const express = require("express");
-const links = require("./links");
-const users = require("./users");
-const { passport } = require("../handlers/index").auth;
+const { passport, handleAsync } = require("../handlers/index");
 const router = express.Router();
-const { visit } = require("../controllers/index").links;
 
-router.post("/login", passport.authenticate("local"), (req, res) => {
-  res.json(req.user.toPublic());
-});
+router.post(
+  "/login",
+  passport.authenticate("local"),
+  handleAsync(async (req, res) => {
+    const loginTime = new Date();
+    req.user.metadata.lastLoginAt = loginTime;
+    req.user.metadata.logins.push(loginTime);
+    await req.user.save();
+    return res.json(req.user.toPublic());
+  })
+);
 
 router.get("/logout", (req, res) => {
   req.logout();
-  res.redirect("/");
+  req.session.destroy((err) => {
+    res.clearCookie("connect.sid");
+    res.redirect("/");
+  });
 });
 
 module.exports = router;
