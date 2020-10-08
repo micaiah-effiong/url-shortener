@@ -5,25 +5,26 @@ const { user } = require("../models/index");
 const getOne = handleAsync(async (req, res, next) => {
   const data = await user.findOne({ _id: req.params.id });
   if (!data) return next(errorResponse("BAD REQUEST", 400));
+
   return res.json({
-    data: "Success!",
+    data: data.toPublic(),
   });
 });
 
 const getAll = handleAsync(async (req, res, next) => {
   let data = await user.find();
-  return res.json(data);
+  return res.json(data.map((u) => u.toPublic()));
 });
 
 const create = handleAsync(async (req, res, next) => {
   const body = { ...req.body, hash: req.body.password };
   const data = (await user.create(body)).toPublic();
-  return res.json(data);
+  return res.status(201).json(data);
 });
 
 const update = handleAsync(async (req, res, next) => {
   const data = await user.findByIdAndUpdate(req.params.id, req.body);
-  return res.json(data);
+  return res.json(data.toPublic());
 });
 
 const deleteOne = handleAsync(async (req, res, next) => {
