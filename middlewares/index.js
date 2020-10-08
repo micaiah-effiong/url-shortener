@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const basename = path.basename(__filename);
-let file = {};
+let handlers = {};
 
 fs.readdirSync(__dirname)
   .filter((file) => {
@@ -11,7 +11,7 @@ fs.readdirSync(__dirname)
   })
   .forEach((file) => {
     const control = require(path.join(__dirname, file));
-    file[control.name] = control;
+    handlers[control.name] = control;
   });
 
-module.exports = file;
+module.exports = handlers;
