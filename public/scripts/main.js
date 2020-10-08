@@ -11,7 +11,7 @@ new Vue({
   methods: {
     submit: async function ({ target }) {
       try {
-        let res = await fetch("/link", {
+        let res = await fetch("/links", {
           method: "POST",
           headers: {
             "content-type": "application/json",
