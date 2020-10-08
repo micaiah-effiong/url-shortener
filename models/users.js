@@ -8,11 +8,24 @@ module.exports = function user(mongoose) {
     email: {
       type: String,
       validate: [isEmail, "A valid email is required"],
+      unique: [true, "Email is already registered, Try signing up"],
       required: [true, "a valid email is required"],
     },
     name: String,
-    hash: String,
-    salt: String,
+
+    // authentication data
+    auth: {
+      hash: String,
+      salt: String,
+    },
+
+    // extra data
+    metadata: {
+      lastLoginAt: Date,
+      logins: Array,
+    },
+
+    // shorten ref
     links: { type: Schema.Types.ObjectId, ref: "Link" },
   };
 
@@ -27,13 +40,14 @@ module.exports = function user(mongoose) {
 
   // Hooks
   _schema.pre("save", async function (next) {
-    try {
-      const salt = await bcrypt.genSalt(10);
-      const hash = await bcrypt.hash(this.hash, salt);
-      this.set({ salt, hash });
-    } catch (err) {
-      console.log(err);
-      throw err;
+    if (this.isNew) {
+      try {
+        const salt = await bcrypt.genSalt(10);
+        const hash = await bcrypt.hash(this.auth.hash, salt);
+        this.set({ auth: { salt, hash } });
+      } catch (err) {
+        throw err;
+      }
     }
     next();
   });
@@ -41,19 +55,15 @@ module.exports = function user(mongoose) {
   // methods
   _schema.methods.verifyPassword = async function (dataPassword) {
     try {
-      return await bcrypt.compare(dataPassword, this.hash);
+      return await bcrypt.compare(dataPassword, this.auth.hash);
     } catch (err) {
-      console.log(err);
       throw err;
     }
   };
 
   _schema.methods.toPublic = function () {
-    return _.omit(this.toJSON(), "salt", "hash");
+    return _.omit(this.toJSON(), "auth");
   };
 
   return model("User", _schema);
 };
-
-// TODO:
-// Hash and verify user password using bcrypt
