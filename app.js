@@ -23,8 +23,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 let sessOption = {
   secret: process.env.SESSION_SECRET,
-  resave: false,
-  saveUninitialized: false,
+  resave: true,
+  saveUninitialized: true,
   store: new FileStore(fileStoreOptions),
 };
 app.use(expressSession(sessOption)); //will be set with secret form env
