@@ -17,7 +17,7 @@ const getAll = handleAsync(async (req, res, next) => {
 });
 
 const create = handleAsync(async (req, res, next) => {
-  const body = { ...req.body, hash: req.body.password };
+  const body = { ...req.body, auth: { hash: req.body.password } };
   const data = (await user.create(body)).toPublic();
   return res.status(201).json(data);
 });
