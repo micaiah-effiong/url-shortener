@@ -1,5 +1,4 @@
 const express = require("express");
-const { nanoid } = require("nanoid");
 const {
   create,
   getAll,
