@@ -5,7 +5,7 @@ const auth = require("./auth");
 const router = express.Router();
 const { visit } = require("../controllers/index").links;
 
-router.use("/link", links);
+router.use("/links", links);
 router.use("/users", users);
 router.use("/auth", auth);
 
