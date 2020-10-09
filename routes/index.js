@@ -1,38 +1,15 @@
 const express = require("express");
 const links = require("./links");
-const { link } = require("../models/index");
-const handleAsync = require("../handlers/async-handler");
+const users = require("./users");
+const auth = require("./auth");
 const router = express.Router();
+const { visit } = require("../controllers/index").links;
 
-router.use("/link", links);
+router.use("/links", links);
+router.use("/users", users);
+router.use("/auth", auth);
 
 /* GET home page. */
-router.get(
-  "/:link",
-  handleAsync(async function (req, res, next) {
-    let {
-      headers: { referer },
-      connection: { remoteAddress: ipAddress },
-      params: { link: slug },
-    } = req;
-    const originalUrl = await link.findOne({ slug });
-    const hasExpired = Date.now() > new Date(originalUrl.expiresAt).getTime();
-    if (!originalUrl) return next();
-    if (hasExpired) {
-      return next(Error("slug has expire"));
-    }
-    originalUrl.clicks++;
-    originalUrl.visit.push({
-      referer,
-      ipAddress,
-    });
-    await originalUrl.save();
-    res.redirect(originalUrl.url);
-  })
-);
-
-// TODO:
-// get CLICK TIME AND DATE
-// get click referer
+router.get("/:link", visit);
 
 module.exports = router;

@@ -6,7 +6,7 @@ body {
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
-.btn{
+.btn {
   font-size: 18px;
   background-color: #f7d075;
   border: 2px solid #f7d075;
@@ -30,7 +30,7 @@ body {
   flex-grow: 1;
   align-items: center;
   justify-content: center;
-  background-color: #F7D075;
+  background-color: #305975;
 }
 .login-form {
   display: flex;
@@ -39,7 +39,7 @@ body {
   padding: 40px;
   justify-content: center;
   align-self: center;
-  width: 60%;
+  width: 45%;
   height: 50%;
   border-radius: 10px;
 }
@@ -66,7 +66,7 @@ body {
   background-color: white;
 }
 
-@media only screen and (max-width: 600px) { 
+@media only screen and (max-width: 600px) {
   .image-container {
     display: none;
   }

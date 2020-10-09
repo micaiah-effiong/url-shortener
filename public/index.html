@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content=" URL shortener that helps in reducing your links to"
+    />
+    <link rel="stylesheet" href="stylesheets/style.css" />
+    <link rel="stylesheet" href="build/tailwind.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link href="stylesheets/poppins.css" rel="stylesheet" />
+    <title>Url Shortener</title>
+  </head>
 
-<head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta name="description" content=" URL shortener that helps in reducing your links to">
-	<link rel="stylesheet" href="stylesheets/style.css" />
-	<link rel="stylesheet" href="build/tailwind.css" />
-	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet" />
-	<title>Url Shortener</title>
-</head>
-
-<body>
+  
 	<div id="app">
 		<header class="text-gray-700 body-font">
 			<div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
@@ -43,30 +49,48 @@
 							<p class="mb-8 leading-relaxed"> Reduce is a modern URL shortener that helps in reducing
 								your links
 								to a very simple form and makes it very simple and easy to use</p>
-							<form @submit.prevent="submit">
+        <header class="text-gray-700 body-font">
+<form @submit.prevent="submit">
+                  <div class="flex w-full md:justify-start justify-center">
+                    <input
+                      class="bg-gray-100 rounded py-2 mr-4 border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-3"
+                      placeholder="Your Link Here"
+                      type="text"
+                      name="url"
+                      v-model="form.url"
+                    />
+                    <input
+                      class="bg-gray-100 rounded py-2 mr-4 border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-3 lg:w-full xl:w-1/2 w-2/4 md:w-full"
+                      placeholder="Your alias here"
+                      type="text"
+                      id="slug"
+                      name="slug"
+                      hidden
+                      v-model="form.slug"
+                    />
+                    <button class="px-3 focus:outline-none btn rounded">
+                      <span
+                        class="iconify"
+                        data-icon="icomoon-free:scissors"
+                        data-inline="false"
+                      ></span>
+                    </button>
+                  </div>
+                  <div class="flex w-full md:justify-start justify-center my-8">
+                    <input
+                      class="bg-gray-100 rounded py-2 border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4"
+                      placeholder="Your new link will appear here"
+                      type="text"
+                      :value="form.res"
+                      readonly
+                      name="dis-short"
+                      hidden
+                      :title="hoverTitle"
+                      @click="copyNewLink"
+                    />
 
-								<div class="flex w-full md:justify-start justify-center">
-
-									<input
-										class="bg-gray-100 rounded py-3 mr-4 border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 lg:w-full xl:w-1/2 w-2/4 md:w-full"
-										placeholder="Your Link Here" type="text" name="url" v-model="form.url">
-									<input
-										class="bg-gray-100 rounded  mr-4 border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 lg:w-full xl:w-1/2 w-2/4 md:w-full"
-										placeholder="Your Link Here" type="text" id="slug" name="slug"
-										v-model="form.slug">
-
-								</div>
-								<div class="flex w-full md:justify-start justify-center my-8">
-									<button class="inline-flex px-6 focus:outline-none btn pt-3"><span class="iconify"
-											data-icon="icomoon-free:scissors" data-inline="false"></span>
-									</button>
-									<input
-										class="bg-gray-100 rounded ml-4 py-3 border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 lg:w-full xl:w-1/2 w-2/4 md:w-full"
-										placeholder="Your Link Here" type="text" :value="form.res" readonly
-										:title="hoverTitle">
-								</div>
-
-							</form>
+                  </div>
+                </form>
 
 						</div>
 						<div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
@@ -130,5 +154,4 @@
 	<script defer type="text/javascript" src="/scripts/vue.js"></script>
 	<script defer type="text/javascript" src="/scripts/main.js"></script>
 </body>
-
 </html>
