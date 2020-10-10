@@ -17,6 +17,7 @@ module.exports = function user(mongoose) {
     auth: {
       hash: String,
       salt: String,
+      varified: { type: Boolean, default: false },
     },
 
     // extra data
