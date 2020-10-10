@@ -18,8 +18,9 @@ const getAll = handleAsync(async (req, res, next) => {
 
 const create = handleAsync(async (req, res, next) => {
   const body = { ...req.body, auth: { hash: req.body.password } };
-  const data = (await user.create(body)).toPublic();
-  return res.status(201).json(data);
+  /*const data = (*/ await user.create(body) /*).toPublic()*/;
+  res.status(201);
+  return next();
 });
 
 const update = handleAsync(async (req, res, next) => {
