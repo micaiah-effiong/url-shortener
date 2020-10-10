@@ -27,7 +27,7 @@ module.exports = function user(mongoose) {
     },
 
     // shorten ref
-    links: { type: Schema.Types.ObjectId, ref: "Link" },
+    links: [{ type: Schema.Types.ObjectId, ref: "Link" }],
   };
 
   const option = {
