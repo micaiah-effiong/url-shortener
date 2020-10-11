@@ -17,6 +17,7 @@ module.exports = function user(mongoose) {
     auth: {
       hash: String,
       salt: String,
+      varified: { type: Boolean, default: false },
     },
 
     // extra data
@@ -26,7 +27,7 @@ module.exports = function user(mongoose) {
     },
 
     // shorten ref
-    links: { type: Schema.Types.ObjectId, ref: "Link" },
+    links: [{ type: Schema.Types.ObjectId, ref: "Link" }],
   };
 
   const option = {

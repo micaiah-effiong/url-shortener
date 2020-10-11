@@ -1,6 +1,7 @@
 const { nanoid } = require("nanoid");
 const { handleAsync, errorResponse } = require("../handlers/index");
 const { link } = require("../models/index");
+const QRCode = require("qrcode");
 let url = "";
 
 module.exports = {
@@ -19,7 +20,13 @@ module.exports = {
     }
 
     const createdLink = await link.create({ slug, url, expiresAt });
-    data = req.fullPath + createdLink.slug;
+    const data = req.fullPath + createdLink.slug;
+
+    if (req.user) {
+      // associate user with created link
+      req.user.links.push(createdLink._id);
+      await req.user.save();
+    }
 
     return res.status(201).json({ url: data });
   }),
@@ -64,3 +71,12 @@ module.exports = {
     res.redirect(originalUrl.url);
   }),
 };
+
+/*ADDING QRCODE FEATURE*/
+// QRCode.toString(data, { type: "terminal" }, function (err, url) {
+//   console.log(url);
+// });
+
+// QRCode.toDataURL(data, function (err, url) {
+//   console.log(url);
+// });
