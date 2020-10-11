@@ -54,17 +54,20 @@ module.exports = {
       params: { link: slug },
     } = req;
     const originalUrl = await link.findOne({ slug });
-    const hasExpired = Date.now() > new Date(originalUrl.expiresAt).getTime();
+    if (!originalUrl) return next(errorResponse("RESOURCE NOT FOUND", 404));
 
-    if (!originalUrl) return next();
+    const hasExpired = Date.now() > new Date(originalUrl.expiresAt).getTime();
+    console.log(req.headers["user-agent"]);
     if (hasExpired) {
-      return next(errorResponse("EXPIRED::URL_NO_LONGER_IN_USE", 400));
+      await originalUrl.delete();
+      return next(errorResponse("RESOURCE NOT FOUND", 404));
     }
 
     originalUrl.clicks++;
     await originalUrl.visit.push({
       referer,
       ipAddress,
+      userAgent: req.headers["user-agent"],
     });
 
     await originalUrl.save();
