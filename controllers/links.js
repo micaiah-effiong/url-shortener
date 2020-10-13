@@ -73,6 +73,19 @@ module.exports = {
     await originalUrl.save();
     res.redirect(originalUrl.url);
   }),
+
+  linkQRcode: handleAsync(async (req, res, next) => {
+    // find link
+    const result = await link.findOne({ slug: req.query.url });
+    if (!result) return next(errorResponse("RESOURCE NOT FOUND", 404));
+
+    // generate QR-code
+    const fullLink = req.fullPath + result.slug;
+    let url = await QRCode.toDataURL(fullLink);
+
+    if (!url) return next(err);
+    return res.json({ data: url });
+  }),
 };
 
 /*ADDING QRCODE FEATURE*/
