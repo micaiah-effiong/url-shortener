@@ -9,7 +9,11 @@ module.exports = {
     handleAsync(async (req, res, next) => {
       const loginTime = new Date();
       req.user.metadata.lastLoginAt = loginTime;
-      req.user.metadata.logins.push(loginTime);
+      req.user.metadata.logins.push({
+        userAgent: req.headers["user-agent"],
+        ipAddress: req.connection.remoteAddress,
+        loginTime,
+      });
       await req.user.save();
       return res.json(req.user.toPublic());
     }),
