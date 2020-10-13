@@ -57,7 +57,7 @@ module.exports = {
     if (!originalUrl) return next(errorResponse("RESOURCE NOT FOUND", 404));
 
     const hasExpired = Date.now() > new Date(originalUrl.expiresAt).getTime();
-    console.log(req.headers["user-agent"]);
+
     if (hasExpired) {
       await originalUrl.delete();
       return next(errorResponse("RESOURCE NOT FOUND", 404));
