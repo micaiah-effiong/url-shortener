@@ -24,7 +24,21 @@ module.exports = function user(mongoose) {
     // extra data
     metadata: {
       lastLoginAt: Date,
-      logins: Array,
+      logins: [
+        new Schema(
+          {
+            userAgent: String,
+            ipAddress: String,
+            loginTime: Date,
+          } /*,
+          {
+            timestamps: {
+              createdAt: "loginTime",
+              updatedAt: null,
+            },
+          }*/
+        ),
+      ],
     },
 
     // shorten ref
