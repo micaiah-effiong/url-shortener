@@ -25,21 +25,15 @@ module.exports = function user(mongoose) {
     metadata: {
       lastLoginAt: Date,
       logins: [
-        new Schema(
-          {
-            userAgent: String,
-            ipAddress: String,
-            loginTime: Date,
-          } /*,
-          {
-            timestamps: {
-              createdAt: "loginTime",
-              updatedAt: null,
-            },
-          }*/
-        ),
+        new Schema({
+          userAgent: String,
+          ipAddress: String,
+          loginTime: Date,
+        }),
       ],
     },
+
+    role: String,
 
     // shorten ref
     links: [{ type: Schema.Types.ObjectId, ref: "Link" }],
