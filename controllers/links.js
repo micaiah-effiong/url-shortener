@@ -32,9 +32,10 @@ module.exports = {
   }),
 
   getAll: handleAsync(async (req, res, next) => {
-    console.log(req.query);
-    let data = await pagination(link.find(), req.query).exec();
-    return res.json(data);
+    const query = link.find();
+    const { paginate } = await pagination(query, req.query);
+    let data = await query.exec();
+    return res.json({ data, paginate });
   }),
 
   getOne: handleAsync(async (req, res, next) => {
