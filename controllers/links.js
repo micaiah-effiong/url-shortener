@@ -1,6 +1,6 @@
 const { nanoid } = require("nanoid");
-const { handleAsync, errorResponse } = require("../handlers/index");
-const { link } = require("../models/index");
+const { handleAsync, errorResponse, pagination } = require("../handlers/index");
+const { link, matirics } = require("../models/index");
 const QRCode = require("qrcode");
 let url = "";
 
@@ -32,18 +32,19 @@ module.exports = {
   }),
 
   getAll: handleAsync(async (req, res, next) => {
-    let data = await link.find();
+    console.log(req.query);
+    let data = await pagination(link.find(), req.query).exec();
     return res.json(data);
   }),
 
   getOne: handleAsync(async (req, res, next) => {
-    let data = await link.findOne({ slug: req.params.slug });
+    let data = await link.findOne({ slug: req.params.slug }).exec();
     if (!data) return next(errorResponse("BAD REQUEST", 400));
     return res.json(data);
   }),
 
   deleteOne: handleAsync(async (req, res, next) => {
-    let data = await link.findOneAndDelete({ slug: req.params.slug });
+    let data = await link.findOneAndDelete({ slug: req.params.slug }).exec();
     return res.json(data);
   }),
 
@@ -53,7 +54,7 @@ module.exports = {
       connection: { remoteAddress: ipAddress },
       params: { link: slug },
     } = req;
-    const originalUrl = await link.findOne({ slug });
+    const originalUrl = await link.findOne({ slug }).exec();
     if (!originalUrl) return next(errorResponse("RESOURCE NOT FOUND", 404));
 
     const hasExpired = Date.now() > new Date(originalUrl.expiresAt).getTime();
@@ -63,12 +64,14 @@ module.exports = {
       return next(errorResponse("RESOURCE NOT FOUND", 404));
     }
 
-    originalUrl.clicks++;
-    await originalUrl.visit.push({
+    const clickMatrics = await matirics.create({
       referer,
       ipAddress,
       userAgent: req.headers["user-agent"],
     });
+
+    originalUrl.clicks++;
+    await originalUrl.visit.push(clickMatrics._id);
 
     await originalUrl.save();
     res.redirect(originalUrl.url);
@@ -76,7 +79,7 @@ module.exports = {
 
   linkQRcode: handleAsync(async (req, res, next) => {
     // find link
-    const result = await link.findOne({ slug: req.query.url });
+    const result = await link.findOne({ slug: req.query.url }).exec();
     if (!result) return next(errorResponse("RESOURCE NOT FOUND", 404));
 
     // generate QR-code
