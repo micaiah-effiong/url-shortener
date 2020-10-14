@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content=" URL shortener that helps in reducing your links to" />
+	<link rel="stylesheet" href="stylesheets/style.css" />
+	<link rel="stylesheet" href="build/tailwind.css" />
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet" />
+	<title>Url Shortener</title>
+</head>
+
+<body class="login-page">
+	<header class="text-gray-700 body-font white-bg">
+		<div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+			<a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
+					stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
+					viewBox="0 0 24 24">
+					<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+				</svg>
+				<span class="ml-3 text-xl">Reduce</span>
+			</a>
+			<nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+				<a class="mr-5 hover:text-gray-900">About</a>
+				<a class="mr-5 hover:text-gray-900">Solution</a>
+				<a class="mr-5 hover:text-gray-900">Login</a>
+			</nav>
+		</div>
+	</header>
+	<main class="flex ">
+
+
+		<section class="image-container">
+			<img src="images/Rectangle 4.png" alt="" />
+		</section>
+
+		<section class="bg-white max-w-lg  p-8 md:p-12 my-10 rounded-lg shadow-2xl">
+
+			<section>
+				<h3 class="font-bold text-2xl">Welcome to Reduce</h3>
+				<p class="text-gray-600 pt-2">Sign in to your account.</p>
+			</section>
+
+			<section class="mt-10">
+
+				<form class="flex flex-col" method="POST" action="#">
+					<div class="mb-6 pt-3 rounded bg-gray-200">
+						<label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="email">Name</label>
+						<input type="text" id="email"
+							class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-yellow-600 transition duration-500 px-3 pb-3">
+					</div>
+					<div class="mb-6 pt-3 rounded bg-gray-200">
+						<label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="email">Email</label>
+						<input type="text" id="email"
+							class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-yellow-600 transition duration-500 px-3 pb-3">
+					</div>
+					<div class="mb-6 pt-3 rounded bg-gray-200">
+						<label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="password">New Password</label>
+						<input type="password" id="password"
+							class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-yellow-600 transition duration-500 px-3 pb-3">
+					</div>
+					<div class="flex justify-end">
+						<a href="#" class="text-sm text-yellow	-600 hover:text-black hover:underline mb-6">Forgot
+							your password?</a>
+					</div>
+					<button
+						class="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200"
+						type="submit">Sign Up</button>
+				</form>
+			</section>
+		</section>
+	</main>
+
+	<div class="max-w-lg mx-auto text-center mt-12 mb-6">
+		<p class="text-black">Already have an account? <a href="#" class="font-bold hover:underline">Sign in</a>.</p>
+	</div>
+</body>
+
+</html>
