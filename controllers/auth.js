@@ -36,7 +36,7 @@ module.exports = {
       async (err, decodedToken) => {
         if (err) return next(err);
 
-        const user = await User.findById(decodedToken.id);
+        const user = await User.findById(decodedToken.id).exec();
         if (!user) return next(errorResponse("UNAUTHORIZED", 401)); // status code shold forbid
         if (token !== user.auth.passwordResetToken)
           return next(errorResponse("FORBIDDEN", 403));
@@ -50,7 +50,7 @@ module.exports = {
   }),
 
   reqPasswordReset: handleAsync(async (req, res, next) => {
-    const user = await User.findOne({ email: req.body.email });
+    const user = await User.findOne({ email: req.body.email }).exec();
     if (!user) return next(errorResponse("RESOURCE NOT FOUND", 404));
 
     jwt.sign(
