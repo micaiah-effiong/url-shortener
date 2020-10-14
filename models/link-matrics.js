@@ -1,7 +1,9 @@
+const { isIP } = require("validator");
+
 module.exports = function matirics(mongoose) {
   const matiricsSchema = {
     referer: String,
-    ipAddress: String,
+    ipAddress: { type: String, validate: isIP },
     userAgent: String,
   };
   const options = {

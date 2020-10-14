@@ -1,3 +1,5 @@
+const { isURL } = require("validator");
+
 module.exports = function link(mongoose) {
   const { Schema, model } = mongoose;
   const option = {
@@ -11,19 +13,20 @@ module.exports = function link(mongoose) {
     url: {
       type: String,
       required: [true, "a valid url is required"],
-      validate: {
-        validator: (_url) => {
-          let isValid;
-          try {
-            new URL(_url);
-            isValid = true;
-          } catch (err) {
-            isValid = false;
-          }
-          return isValid;
-        },
-        message: (prop) => `${prop.value} is an invalid URL`,
-      },
+      // validate: {
+      //   validator: (_url) => {
+      //     let isValid;
+      //     try {
+      //       new URL(_url);
+      //       isValid = true;
+      //     } catch (err) {
+      //       isValid = false;
+      //     }
+      //     return isValid;
+      //   },
+      //   message: (prop) => `${prop.value} is an invalid URL`,
+      // },
+      validate: [isURL, "Invalid URL"],
     },
 
     slug: {
