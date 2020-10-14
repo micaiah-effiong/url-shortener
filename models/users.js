@@ -18,6 +18,7 @@ module.exports = function user(mongoose) {
       hash: String,
       salt: String,
       varified: { type: Boolean, default: false },
+      passwordResetToken: String,
     },
 
     // extra data
@@ -57,6 +58,16 @@ module.exports = function user(mongoose) {
   _schema.methods.verifyPassword = async function (dataPassword) {
     try {
       return await bcrypt.compare(dataPassword, this.auth.hash);
+    } catch (err) {
+      throw err;
+    }
+  };
+
+  _schema.methods.resetPassword = async function (newPassword) {
+    try {
+      const salt = await bcrypt.genSalt(10);
+      const hash = await bcrypt.hash(newPassword, salt);
+      this.set({ auth: { salt, hash } });
     } catch (err) {
       throw err;
     }

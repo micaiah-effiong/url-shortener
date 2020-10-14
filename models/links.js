@@ -54,6 +54,7 @@ module.exports = function link(mongoose) {
         {
           referer: String,
           ipAddress: String,
+          userAgent: String,
           visitAt: { type: Date, required: true, default: new Date() },
         },
         {
