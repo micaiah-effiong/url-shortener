@@ -24,5 +24,5 @@ module.exports = async function pagination(query, userQuery) {
     paginate.next = page + 1;
   }
 
-  return { query, paginate };
+  return paginate;
 };
