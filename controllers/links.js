@@ -1,5 +1,10 @@
 const { nanoid } = require("nanoid");
-const { handleAsync, errorResponse, pagination } = require("../handlers/index");
+const {
+  handleAsync,
+  errorResponse,
+  pagination,
+  advanceQuery,
+} = require("../handlers/index");
 const { link, matirics } = require("../models/index");
 const QRCode = require("qrcode");
 let url = "";
@@ -33,9 +38,10 @@ module.exports = {
 
   getAll: handleAsync(async (req, res, next) => {
     const query = link.find();
-    const { paginate } = await pagination(query, req.query);
+    advanceQuery(query, req.query);
+    const paginate = await pagination(query, req.query);
     let data = await query.exec();
-    return res.json({ data, paginate });
+    return res.json({ data, pagination: paginate });
   }),
 
   getOne: handleAsync(async (req, res, next) => {
