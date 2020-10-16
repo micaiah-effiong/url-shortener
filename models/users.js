@@ -24,8 +24,16 @@ module.exports = function user(mongoose) {
     // extra data
     metadata: {
       lastLoginAt: Date,
-      logins: Array,
+      logins: [
+        new Schema({
+          userAgent: String,
+          ipAddress: String,
+          loginTime: Date,
+        }),
+      ],
     },
+
+    role: String,
 
     // shorten ref
     links: [{ type: Schema.Types.ObjectId, ref: "Link" }],

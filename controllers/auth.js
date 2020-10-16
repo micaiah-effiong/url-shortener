@@ -9,7 +9,11 @@ module.exports = {
     handleAsync(async (req, res, next) => {
       const loginTime = new Date();
       req.user.metadata.lastLoginAt = loginTime;
-      req.user.metadata.logins.push(loginTime);
+      req.user.metadata.logins.push({
+        userAgent: req.headers["user-agent"],
+        ipAddress: req.connection.remoteAddress,
+        loginTime,
+      });
       await req.user.save();
       return res.json(req.user.toPublic());
     }),
@@ -32,7 +36,7 @@ module.exports = {
       async (err, decodedToken) => {
         if (err) return next(err);
 
-        const user = await User.findById(decodedToken.id);
+        const user = await User.findById(decodedToken.id).exec();
         if (!user) return next(errorResponse("UNAUTHORIZED", 401)); // status code shold forbid
         if (token !== user.auth.passwordResetToken)
           return next(errorResponse("FORBIDDEN", 403));
@@ -46,7 +50,7 @@ module.exports = {
   }),
 
   reqPasswordReset: handleAsync(async (req, res, next) => {
-    const user = await User.findOne({ email: req.body.email });
+    const user = await User.findOne({ email: req.body.email }).exec();
     if (!user) return next(errorResponse("RESOURCE NOT FOUND", 404));
 
     jwt.sign(

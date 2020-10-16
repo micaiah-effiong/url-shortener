@@ -1,4 +1,5 @@
 module.exports = function link(mongoose) {
+  const { Schema, model } = mongoose;
   const option = {
     timestamps: {
       createdAt: "created_at",
@@ -49,24 +50,9 @@ module.exports = function link(mongoose) {
       default: 0,
     },
 
-    visit: [
-      new mongoose.Schema(
-        {
-          referer: String,
-          ipAddress: String,
-          userAgent: String,
-          visitAt: { type: Date, required: true, default: new Date() },
-        },
-        {
-          timestamps: {
-            createdAt: "created_at",
-            updatedAt: null,
-          },
-        }
-      ),
-    ],
+    visit: [{ type: Schema.Types.ObjectId, ref: "Matirics" }],
   };
 
-  const linkSchema = new mongoose.Schema(_linkSchema, option);
-  return mongoose.model("Link", linkSchema);
+  const linkSchema = new Schema(_linkSchema, option);
+  return model("Link", linkSchema);
 };
