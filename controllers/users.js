@@ -1,6 +1,11 @@
 const { nanoid } = require("nanoid");
-const { handleAsync, errorResponse } = require("../handlers/index");
-const { user } = require("../models/index");
+const {
+  handleAsync,
+  errorResponse,
+  pagination,
+  advanceQuery,
+} = require("../handlers/index");
+const { user, link } = require("../models/index");
 
 const getOne = handleAsync(async (req, res, next) => {
   const data = await user.findOne({ _id: req.params.id }).exec();
@@ -12,8 +17,13 @@ const getOne = handleAsync(async (req, res, next) => {
 });
 
 const getAll = handleAsync(async (req, res, next) => {
-  let data = await user.find().exec();
-  return res.json(data.map((u) => u.toPublic()));
+  const query = user.find();
+  const paginate = await pagination(query, req.query);
+  const data = await query.exec();
+  return res.json({
+    data: data.map((u) => u.toPublic()),
+    pagination: paginate,
+  });
 });
 
 const create = handleAsync(async (req, res, next) => {
@@ -28,6 +38,25 @@ const update = handleAsync(async (req, res, next) => {
   return res.json(data.toPublic());
 });
 
+/*
+@auth
+*/
+const profile = handleAsync(async (req, res, next) => {
+  return res.json(req.user.toUserPublic());
+});
+
+/*
+@auth
+*/
+const userLinks = handleAsync(async (req, res, next) => {
+  req.query.user = req.user._id;
+  const query = link.find();
+  advanceQuery(query, req.query);
+  const paginate = await pagination(query, req.query);
+  const data = await query.exec();
+  return res.json({ data, pagination: paginate });
+});
+
 const deleteOne = handleAsync(async (req, res, next) => {
   const data = await user.findByIdAndDelete(req.params.id).exec();
   return res.json(data);
@@ -40,4 +69,6 @@ module.exports = {
   create,
   update,
   deleteOne,
+  profile,
+  userLinks,
 };
