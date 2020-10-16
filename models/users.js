@@ -17,12 +17,12 @@ module.exports = function user(mongoose) {
     auth: {
       hash: String,
       salt: String,
-      varified: { type: Boolean, default: false },
       passwordResetToken: String,
     },
 
     // extra data
     metadata: {
+      verified: { type: Boolean, default: false },
       lastLoginAt: Date,
       logins: [
         new Schema({
@@ -82,6 +82,18 @@ module.exports = function user(mongoose) {
   };
 
   _schema.methods.toPublic = function () {
+    return _.omit(
+      this.toJSON(),
+      "auth",
+      "metadata",
+      "role",
+      "__v",
+      "created_at",
+      "updated_at"
+    );
+  };
+
+  _schema.methods.toUserPublic = function () {
     return _.omit(this.toJSON(), "auth");
   };
 
