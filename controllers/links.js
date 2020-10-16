@@ -24,15 +24,17 @@ module.exports = {
       slug = nanoid(7); // create slug with nanoid
     }
 
-    const createdLink = await link.create({ slug, url, expiresAt });
+    const createdLink = new link({ slug, url, expiresAt });
     const data = req.fullPath + createdLink.slug;
 
     if (req.user) {
       // associate user with created link
+      createdLink.user = req.user._id;
       req.user.links.push(createdLink._id);
       await req.user.save();
     }
 
+    await createdLink.save();
     return res.status(201).json({ url: data });
   }),
 
@@ -40,13 +42,13 @@ module.exports = {
     const query = link.find();
     advanceQuery(query, req.query);
     const paginate = await pagination(query, req.query);
-    let data = await query.exec();
+    const data = await query.exec();
     return res.json({ data, pagination: paginate });
   }),
 
   getOne: handleAsync(async (req, res, next) => {
     let data = await link.findOne({ slug: req.params.slug }).exec();
-    if (!data) return next(errorResponse("BAD REQUEST", 400));
+    if (!data) return next(errorResponse("RESOURCE NOT FOUND", 404));
     return res.json(data);
   }),
 
