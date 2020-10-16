@@ -13,19 +13,6 @@ module.exports = function link(mongoose) {
     url: {
       type: String,
       required: [true, "a valid url is required"],
-      // validate: {
-      //   validator: (_url) => {
-      //     let isValid;
-      //     try {
-      //       new URL(_url);
-      //       isValid = true;
-      //     } catch (err) {
-      //       isValid = false;
-      //     }
-      //     return isValid;
-      //   },
-      //   message: (prop) => `${prop.value} is an invalid URL`,
-      // },
       validate: [isURL, "Invalid URL"],
     },
 
@@ -41,6 +28,8 @@ module.exports = function link(mongoose) {
         message: (prop) => `${prop.value} is invalid`,
       },
     },
+
+    user: { type: Schema.Types.ObjectId, ref: "User" },
 
     expiresAt: {
       type: Date,
