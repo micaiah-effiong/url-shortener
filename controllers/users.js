@@ -38,6 +38,11 @@ const update = handleAsync(async (req, res, next) => {
   return res.json(data.toPublic());
 });
 
+const deleteOne = handleAsync(async (req, res, next) => {
+  const data = await user.findByIdAndDelete(req.params.id).exec();
+  return res.json(data);
+});
+
 /*
 @auth
 */
@@ -55,11 +60,6 @@ const userLinks = handleAsync(async (req, res, next) => {
   const paginate = await pagination(query, req.query);
   const data = await query.exec();
   return res.json({ data, pagination: paginate });
-});
-
-const deleteOne = handleAsync(async (req, res, next) => {
-  const data = await user.findByIdAndDelete(req.params.id).exec();
-  return res.json(data);
 });
 
 module.exports = {
