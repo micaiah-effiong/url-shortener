@@ -31,6 +31,7 @@ module.exports = function link(mongoose) {
 
     user: { type: Schema.Types.ObjectId, ref: "User" },
     coUsers: [{ type: Schema.Types.ObjectId, ref: "User" }],
+    invite: { type: Array },
 
     expiresAt: {
       type: Date,
