@@ -62,6 +62,43 @@ const userLinks = handleAsync(async (req, res, next) => {
   return res.json({ data, pagination: paginate });
 });
 
+const shareLinkWithUsers = handleAsync(async (req, res, next) => {
+  // send invitation mail to user
+  const query = link.findOne({ slug: req.params.link });
+  const result = await query.exec();
+  const queryUser = user.findOne({ email: req.body.user });
+  const resultUser = await queryUser.exec();
+
+  if (!(result || resultUser)) return next(errorResponse("RESOURCE NOT FOUND"));
+  if (result.invite.includes(req.body.user)) return res.json({ success: true });
+
+  result.invite.push(resultUser._id);
+  await result.save();
+  return res.json({ success: true });
+});
+
+const acceptLinkInvite = handleAsync(async (req, res, next) => {
+  const query = link.findOne({ slug: req.params.link });
+  const result = await query.exec();
+
+  // catch errors
+  if (!result) return next(errorResponse("RESOURCE NOT FOUND"));
+  if (!result.invite.includes(req.user._id))
+    return next(errorResponse("FORBBIDEN"));
+
+  // modify
+  req.user.sharedLinks.push(result._id);
+  const index = result.invite.indexOf(req.user._id);
+  result.coUsers.push(result.invite.splice(index, 1));
+
+  // save
+  await req.user.save();
+  await result.save();
+
+  // send response
+  return res.json({ success: true });
+});
+
 module.exports = {
   _name: "users",
   getOne,
@@ -71,4 +108,6 @@ module.exports = {
   deleteOne,
   profile,
   userLinks,
+  shareLinkWithUsers,
+  acceptLinkInvite,
 };
