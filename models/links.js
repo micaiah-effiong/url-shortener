@@ -30,10 +30,10 @@ module.exports = function link(mongoose) {
     },
 
     user: { type: Schema.Types.ObjectId, ref: "User" },
+    coUsers: [{ type: Schema.Types.ObjectId, ref: "User" }],
 
     expiresAt: {
       type: Date,
-      required: [true, "a slug is required"],
       default: new Date(Date.now() + 1000 * 60 * 60 * 24 * 30),
     },
 
@@ -42,7 +42,7 @@ module.exports = function link(mongoose) {
       default: 0,
     },
 
-    visit: [{ type: Schema.Types.ObjectId, ref: "Matirics" }],
+    visit: [{ type: Schema.Types.ObjectId, ref: "Matrics" }],
   };
 
   const linkSchema = new Schema(_linkSchema, option);

@@ -1,7 +1,7 @@
 const { isIP } = require("validator");
 
 module.exports = function matirics(mongoose) {
-  const matiricsSchema = {
+  const matricsSchema = {
     referer: String,
     ipAddress: { type: String, validate: isIP },
     userAgent: String,
@@ -13,6 +13,6 @@ module.exports = function matirics(mongoose) {
     },
   };
 
-  const schema = new mongoose.Schema(matiricsSchema, options);
-  return mongoose.model("Matirics", matiricsSchema);
+  const schema = new mongoose.Schema(matricsSchema, options);
+  return mongoose.model("Matrics", matricsSchema);
 };
