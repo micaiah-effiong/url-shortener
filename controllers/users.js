@@ -84,7 +84,7 @@ const acceptLinkInvite = handleAsync(async (req, res, next) => {
   // catch errors
   if (!result) return next(errorResponse("RESOURCE NOT FOUND"));
   if (!result.invite.includes(req.user._id))
-    return next(errorResponse("FORBBIDEN"));
+    return next(errorResponse("FORBBIDEN", 403));
 
   // modify
   req.user.sharedLinks.push(result._id);
