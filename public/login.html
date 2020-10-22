@@ -13,7 +13,7 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap"
       rel="stylesheet"
     />
-    <title>Url Shortener</title>
+    <title>Url Shortener - Sign-in</title>
   </head>
   <body class="login-page">
     <header class="text-gray-700 body-font white-bg">
@@ -54,13 +54,8 @@
         <img src="images/Rectangle 4.png" alt="" />
       </section> -->
       <section class="login-form-container">
-        <form class="login-form" action="#">
-          <input
-            type="text"
-            name="username"
-            placeholder="Enter username"
-            id=""
-          />
+        <form class="login-form" action="/auth/login" method="post">
+          <input type="text" name="email" placeholder="Enter username" id="" />
           <input
             type="password"
             placeholder="Enter password"
@@ -68,7 +63,14 @@
             id=""
           />
           <button type="submit">Login</button>
-          <p>New User? <a href="Registration.html">Sign Up</a></p>
+          <p>
+            New user?
+            <a
+              href="registration.html"
+              style="color: #006064; font-weight: bold;"
+              >Sign Up</a
+            >
+          </p>
         </form>
       </section>
     </section>

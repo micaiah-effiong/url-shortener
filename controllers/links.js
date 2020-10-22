@@ -1,5 +1,10 @@
 const { nanoid } = require("nanoid");
-const { handleAsync, errorResponse, pagination } = require("../handlers/index");
+const {
+  handleAsync,
+  errorResponse,
+  pagination,
+  advanceQuery,
+} = require("../handlers/index");
 const { link, matirics } = require("../models/index");
 const QRCode = require("qrcode");
 let url = "";
@@ -19,27 +24,31 @@ module.exports = {
       slug = nanoid(7); // create slug with nanoid
     }
 
-    const createdLink = await link.create({ slug, url, expiresAt });
+    const createdLink = new link({ slug, url, expiresAt });
     const data = req.fullPath + createdLink.slug;
 
     if (req.user) {
       // associate user with created link
+      createdLink.user = req.user._id;
       req.user.links.push(createdLink._id);
       await req.user.save();
     }
 
+    await createdLink.save();
     return res.status(201).json({ url: data });
   }),
 
   getAll: handleAsync(async (req, res, next) => {
-    console.log(req.query);
-    let data = await pagination(link.find(), req.query).exec();
-    return res.json(data);
+    const query = link.find();
+    advanceQuery(query, req.query);
+    const paginate = await pagination(query, req.query);
+    const data = await query.exec();
+    return res.json({ data, pagination: paginate });
   }),
 
   getOne: handleAsync(async (req, res, next) => {
     let data = await link.findOne({ slug: req.params.slug }).exec();
-    if (!data) return next(errorResponse("BAD REQUEST", 400));
+    if (!data) return next(errorResponse("RESOURCE NOT FOUND", 404));
     return res.json(data);
   }),
 
