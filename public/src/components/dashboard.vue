@@ -25,7 +25,7 @@ export default {
 <style scoped>
 main > header {
   width: 100%;
-  height: 10%;
+  height: 7%;
 }
 main {
   height: 100vh;
