@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Links from "@/components/links";
+import Links from "@/components/links-page/links";
 import Manage from "@/components/manage";
 import Personal from "@/components/personal";
 import Overview from "@/components/overview";
