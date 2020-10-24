@@ -22,6 +22,7 @@
 </template>
 
 <script>
+// import axios from "axios";
 export default {
   name: "Links",
   data() {
@@ -55,10 +56,11 @@ export default {
     };
   },
   created() {
-    const self = this;
-    fetch("http://localhost:8000/links" /*, { mode: "no-cors" }*/)
-      .then((res) => res.json())
-      .then((data) => (self.links = data));
+    // const self = this;
+    // axios.get("http://localhost:8000/links").then((res) => {
+    //   console.log(res);
+    // });
+    // .then((data) => (self.links = data));
   },
 };
 </script>
