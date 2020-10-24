@@ -26,13 +26,14 @@ export default {
 main > header {
   width: 100%;
   height: 7%;
+  text-align: center;
 }
 main {
   height: 100vh;
 }
 
 main > div {
-  height: 90%;
+  height: 93%;
   display: flex;
   flex-wrap: wrap;
 }
