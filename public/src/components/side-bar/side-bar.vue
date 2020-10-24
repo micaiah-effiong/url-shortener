@@ -1,9 +1,9 @@
 <template>
   <nav>
+    <router-link to="/overview"><li>Overview</li></router-link>
     <router-link to="/links"><li>Links</li></router-link>
     <router-link to="/manage"><li>Manage</li></router-link>
     <router-link to="/personal"><li>Personal</li></router-link>
-    <router-link to="/overview"><li>Overview</li></router-link>
   </nav>
 </template>
 
@@ -32,6 +32,6 @@ a {
 }
 
 a:hover {
-  background-color: #9fa8da;
+  background-color: #70bcf9;
 }
 </style>
