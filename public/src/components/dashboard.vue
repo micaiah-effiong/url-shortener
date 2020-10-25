@@ -35,7 +35,7 @@ main {
 main > div {
   height: 93%;
   display: flex;
-  flex-wrap: wrap;
+  /*flex-wrap: wrap;*/
 }
 
 .sidebar {
@@ -45,7 +45,7 @@ main > div {
 }
 
 .main-page {
-  width: 80%;
+  width: 100%;
   background-color: #f5f5f5;
 }
 </style>
