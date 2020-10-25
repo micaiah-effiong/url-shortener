@@ -1,9 +1,8 @@
 <template>
-  <div>
-    <div>Overview Page</div>
-    <StatisticsCard :figure="200" text="Clicks" />
-    <StatisticsCard :figure="30" text="Total Links" />
-    <StatisticsCard :figure="60" text="Something else" />
+  <div class="overview-panel">
+    <StatisticsCard :figure="200" text="Total clicks" />
+    <StatisticsCard :figure="30" text="Total links" />
+    <StatisticsCard :figure="60" text="Top referrer clicks" />
     <StatisticsCard :figure="10" text="Small one" />
   </div>
 </template>
@@ -15,3 +14,17 @@ export default {
   components: { StatisticsCard },
 };
 </script>
+
+<style scoped>
+.overview-panel {
+  padding: 3px 13px;
+  display: flex;
+  justify-content: space-evenly;
+}
+@media (max-width: 650px) {
+  .overview-panel {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}
+</style>
