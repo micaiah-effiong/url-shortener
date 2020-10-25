@@ -1,5 +1,5 @@
 <template>
-  <div class="group">
+  <!--   <div class="group">
     <div class="group-card" v-for="(i, y) in links" v-bind:key="y">
       <div class="card-item">
         <div>slug</div>
@@ -13,11 +13,26 @@
         <div>URL</div>
         <div>{{ i.url.slice(0, 13) }}...</div>
       </div>
-      <!-- <div class="card-item">
+      <div class="card-item">
         <div>createdAt</div>
         <div>{{ i.createdAt }}</div>
-      </div> -->
+      </div>
     </div>
+  </div> -->
+  <div class="flex">
+    <div style="width: 100%;">
+      <div>Sun Oct 25 2020</div>
+      <div>Micaiah Effiong</div>
+      <div>Link Title</div>
+      <div style="font-size: 2em;">http://ihsdckb.dfdsf.dfsdfnhs/csdf/fsfd</div>
+      <div>short link</div>
+      <button class="option-btn">EDIT</button>
+      <button class="option-btn">SHARE</button>
+      <button class="option-btn">MANAGE USER</button>
+      <button class="option-btn">QR CODE</button>
+    </div>
+    <div class="panel">🚀Clicks</div>
+    <div class="panel">📎Referres</div>
   </div>
 </template>
 
@@ -66,6 +81,26 @@ export default {
 </script>
 
 <style scoped>
+.option-btn {
+  background-color: #f5f5f5;
+  border: 1px solid #ff7043;
+  padding: 1px 3px;
+  margin: 1px 3px;
+}
+
+.flex {
+  display: flex;
+  height: 100%;
+  flex-wrap: wrap;
+}
+
+.panel {
+  height: auto;
+  width: 50%;
+}
+</style>
+
+<!-- <style scoped>
 .group {
   display: flex;
   text-align: left;
@@ -116,4 +151,4 @@ export default {
     justify-content: space-evenly;
   }
 }
-</style>
+</style> -->
