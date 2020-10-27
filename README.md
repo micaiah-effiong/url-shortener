@@ -5,10 +5,10 @@
 # Steps to run the project in your localhost
 
 1. Install nodejs v8.0.0<br>
-   <https://nodejs.org/es/>
+   Download and install <a href="https://nodejs.org/">Nodejs</a> <br>
 
 2. Install mongodb<br>
-   <https://docs.mongodb.com/guides/server/install>
+   Download and install <a href="https://docs.mongodb.com/guides/server/install">MongoDB</a> <br>
 
 3. The frontend is implemented with vuejs + tailwindcss
 
@@ -17,7 +17,7 @@
 5. Copy and paste the url of the local database mongo.
 
 6. After clone the project, navigate to the directory and run `npm install` to install require node_modules.<br>
-  
+
 7. Finaly run project with next command. 🚀<br>
    `npm run dev`
 
