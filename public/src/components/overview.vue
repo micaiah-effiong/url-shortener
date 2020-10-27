@@ -21,6 +21,7 @@ export default {
   display: flex;
   justify-content: space-evenly;
 }
+
 @media (max-width: 650px) {
   .overview-panel {
     flex-wrap: wrap;

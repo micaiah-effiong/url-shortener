@@ -21,7 +21,6 @@ export default {
 
 <style scoped>
 .group-card {
-  /*width: 29%;*/
   background-color: #70bcf9;
   border-radius: 5px;
   box-shadow: 0 0 6px #a8a3a3;
