@@ -26,15 +26,16 @@ export default {
 main > header {
   width: 100%;
   height: 7%;
+  text-align: center;
 }
 main {
   height: 100vh;
 }
 
 main > div {
-  height: 90%;
+  height: 93%;
   display: flex;
-  flex-wrap: wrap;
+  /*flex-wrap: wrap;*/
 }
 
 .sidebar {
@@ -44,7 +45,7 @@ main > div {
 }
 
 .main-page {
-  width: 80%;
+  width: 100%;
   background-color: #f5f5f5;
 }
 </style>
