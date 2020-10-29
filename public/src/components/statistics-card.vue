@@ -25,7 +25,8 @@ export default {
   border-radius: 5px;
   box-shadow: 0 0 6px #a8a3a3;
   padding: 10px 20px;
-  margin: 13px 0;
+  margin: 13px;
+  width: 150px;
 }
 
 .card-fig {
