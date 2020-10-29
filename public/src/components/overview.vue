@@ -25,7 +25,6 @@ export default {
 @media (max-width: 650px) {
   .overview-panel {
     flex-wrap: wrap;
-    justify-content: space-between;
   }
 }
 </style>
