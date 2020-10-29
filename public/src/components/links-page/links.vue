@@ -98,6 +98,12 @@ export default {
   height: auto;
   width: 50%;
 }
+
+@media (max-width: 550px) {
+  .panel {
+    width: 100%;
+  }
+}
 </style>
 
 <!-- <style scoped>
