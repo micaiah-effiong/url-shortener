@@ -8,7 +8,7 @@
         <SideBar />
       </div>
       <div class="main-page">
-        <router-view>Main Page</router-view>
+        <router-view></router-view>
       </div>
     </div>
   </main>
