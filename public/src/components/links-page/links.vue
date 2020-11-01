@@ -2,7 +2,7 @@
   <div class="flex">
     <div class="link-dtl">
       <div style="font-size: 12px;">
-        <span> <datetime time="10-25-2020"> Sun Oct 25 2020</datetime></span> |
+        <span> <time datetime="10-25-2020"> Sun Oct 25 2020</time></span> |
         Micaiah Effiong
       </div>
       <div class="gap-t"><h3>The testing link</h3></div>
@@ -17,21 +17,18 @@
         <button class="option-btn">QR CODE</button>
       </div>
     </div>
-    <div class="panel">
-      <div>🚀Clicks</div>
-      <div>Info here</div>
-    </div>
-    <div class="panel">
-      <div>📎Referres</div>
-      <div>Info here</div>
-    </div>
+    <ClicksPanel />
+    <ReferrersPanel />
   </div>
 </template>
 
 <script>
 // import axios from "axios";
+import ClicksPanel from "./clicks-panel";
+import ReferrersPanel from "./referrers-panel";
 export default {
   name: "Links",
+  components: { ClicksPanel, ReferrersPanel },
   data() {
     return {
       links: [
@@ -109,9 +106,10 @@ div.gap-t {
 
 .panel {
   width: 50%;
+  margin-top: 20px;
 }
 
-@media (max-width: 550px) {
+@media (max-width: 768px) {
   .panel {
     width: 100%;
   }
