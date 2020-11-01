@@ -1,45 +1,34 @@
 <template>
-  <!--   <div class="group">
-    <div class="group-card" v-for="(i, y) in links" v-bind:key="y">
-      <div class="card-item">
-        <div>slug</div>
-        <div>{{ i.slug }}</div>
-      </div>
-      <div class="card-item">
-        <div>clicks</div>
-        <div>{{ i.clicks }}</div>
-      </div>
-      <div class="card-item">
-        <div>URL</div>
-        <div>{{ i.url.slice(0, 13) }}...</div>
-      </div>
-      <div class="card-item">
-        <div>createdAt</div>
-        <div>{{ i.createdAt }}</div>
-      </div>
-    </div>
-  </div> -->
   <div class="flex">
-    <div style="width: 100%;">
-      <div>Sun Oct 25 2020</div>
-      <div>Micaiah Effiong</div>
-      <div>Link Title</div>
-      <div style="font-size: 2em;">http://ihsdckb.dfdsf.dfsdfnhs/csdf/fsfd</div>
-      <div>short link</div>
-      <button class="option-btn">EDIT</button>
-      <button class="option-btn">SHARE</button>
-      <button class="option-btn">MANAGE USER</button>
-      <button class="option-btn">QR CODE</button>
+    <div class="link-dtl">
+      <div style="font-size: 12px;">
+        <span> <time datetime="10-25-2020"> Sun Oct 25 2020</time></span> |
+        Micaiah Effiong
+      </div>
+      <div class="gap-t"><h3>The testing link</h3></div>
+      <p style="font-size: 1.5em; word-wrap: anywhere;">
+        http://ihsdckb.dfdsf.dfsdfnhs/csdf/fsfd
+      </p>
+      <div>http://reduce.com/temp-state</div>
+      <div class="gap-t">
+        <button class="option-btn">EDIT</button>
+        <button class="option-btn">SHARE</button>
+        <button class="option-btn">MANAGE USER</button>
+        <button class="option-btn">QR CODE</button>
+      </div>
     </div>
-    <div class="panel">🚀Clicks</div>
-    <div class="panel">📎Referres</div>
+    <ClicksPanel />
+    <ReferrersPanel />
   </div>
 </template>
 
 <script>
 // import axios from "axios";
+import ClicksPanel from "./clicks-panel";
+import ReferrersPanel from "./referrers-panel";
 export default {
   name: "Links",
+  components: { ClicksPanel, ReferrersPanel },
   data() {
     return {
       links: [
@@ -81,74 +70,48 @@ export default {
 </script>
 
 <style scoped>
+.link-dtl {
+  width: 100%;
+  padding: 7px;
+}
+
+.link-dtl > div {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
 .option-btn {
   background-color: #f5f5f5;
-  border: 1px solid #ff7043;
+  border: 1px solid #8bc34a;
   padding: 1px 3px;
   margin: 1px 3px;
+  border-radius: 5px;
+  transition: 0.5s;
+}
+
+.option-btn:active {
+  background-color: #8bc34a;
+  transition: 0.5s;
 }
 
 .flex {
   display: flex;
-  height: 100%;
+  /*height: 100%;*/
   flex-wrap: wrap;
+}
+
+div.gap-t {
+  margin-top: 15px;
 }
 
 .panel {
-  height: auto;
   width: 50%;
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .panel {
+    width: 100%;
+  }
 }
 </style>
-
-<!-- <style scoped>
-.group {
-  display: flex;
-  text-align: left;
-  padding: 13px;
-  border-radius: 7px;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.group-card {
-  width: 29%;
-  background-color: #70bcf9;
-  border-radius: 5px;
-  box-shadow: 0 0 11px #a8a3a3;
-  padding: 10px 6px;
-  margin: 13px 0;
-}
-
-.card-item {
-  display: flex;
-  justify-content: space-between;
-}
-
-.group > div > div {
-  padding: 3px;
-}
-
-@media (min-width: 1200px) {
-  .group-card {
-    width: 21%;
-  }
-}
-
-@media (max-width: 800px) {
-  .group-card {
-    width: 45%;
-  }
-  .group {
-    justify-content: space-evenly;
-  }
-}
-
-@media (max-width: 550px) {
-  .group > div {
-    width: 70%;
-  }
-  .group {
-    justify-content: space-evenly;
-  }
-}
-</style> -->

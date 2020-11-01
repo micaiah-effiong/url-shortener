@@ -23,9 +23,10 @@ export default {
 .group-card {
   background-color: #70bcf9;
   border-radius: 5px;
-  box-shadow: 0 0 6px #a8a3a3;
+  box-shadow: 0 0 3px #a8a3a3;
   padding: 10px 20px;
-  margin: 13px 0;
+  margin: 13px;
+  width: 150px;
 }
 
 .card-fig {
@@ -34,5 +35,6 @@ export default {
 
 .card-text {
   font-size: 20px;
+  margin-top: 13px;
 }
 </style>
