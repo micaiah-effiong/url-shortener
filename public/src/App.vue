@@ -15,6 +15,8 @@ export default {
 };
 </script>
 
+<style src="./assets/css/tailwind.css"></style>
+
 <style>
 * {
   font-family: Avenir, Helvetica, Arial, sans-serif;
