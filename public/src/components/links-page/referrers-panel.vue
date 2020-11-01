@@ -1,5 +1,5 @@
 <template>
-  <div class="panel">
+  <div class="panel p-3">
     <div>📎Referres</div>
     <PieChart :chartdata="dataCollection" :options="chartOptions" />
     <div>Info here</div>
@@ -19,9 +19,10 @@ export default {
         legend: {
           position: "bottom",
         },
+        cutoutPercentage: 55,
       },
       dataCollection: {
-        labels: ["1", "2", "3"],
+        labels: ["One", "Two", "Three"],
         datasets: [
           {
             data: [70, 50, 60],
