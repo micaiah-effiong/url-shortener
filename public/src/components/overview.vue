@@ -1,9 +1,12 @@
 <template>
-  <div class="overview-panel">
-    <StatisticsCard :figure="200" text="Total clicks" />
-    <StatisticsCard :figure="30" text="Total links" />
-    <StatisticsCard :figure="60" text="Top referrer clicks" />
-    <StatisticsCard :figure="10" text="Small one" />
+  <div class="">
+    <div class="card-panel">
+      <StatisticsCard :figure="200" text="Total clicks" />
+      <StatisticsCard :figure="30" text="Total links" />
+      <StatisticsCard :figure="60" text="Top referrer" />
+      <StatisticsCard :figure="10" text="Top link" />
+    </div>
+    <div class="chart-panel">Chart Here</div>
   </div>
 </template>
 
@@ -16,14 +19,14 @@ export default {
 </script>
 
 <style scoped>
-.overview-panel {
+.card-panel {
   padding: 3px 13px;
   display: flex;
   justify-content: space-evenly;
 }
 
 @media (max-width: 650px) {
-  .overview-panel {
+  .card-panel {
     flex-wrap: wrap;
   }
 }
