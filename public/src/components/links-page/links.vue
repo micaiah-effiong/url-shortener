@@ -1,15 +1,17 @@
 <template>
   <div class="flex">
-    <div class="link-dtl">
+    <div class="link-dtl p-3">
       <div style="font-size: 12px;">
-        <span> <time datetime="10-25-2020"> Sun Oct 25 2020</time></span> |
-        Micaiah Effiong
+        <span> <time datetime="10-25-2020"> Sun Oct 25 2020</time></span>
+        | Micaiah Effiong
       </div>
       <div class="gap-t"><h3>The testing link</h3></div>
       <p style="font-size: 1.5em; word-wrap: anywhere;">
         http://ihsdckb.dfdsf.dfsdfnhs/csdf/fsfd
       </p>
       <div>http://reduce.com/temp-state</div>
+      <div class="mr-5">Total Clicks: 7</div>
+      <div>Top Referrer: twitter.com</div>
       <div class="gap-t">
         <button class="option-btn">EDIT</button>
         <button class="option-btn">SHARE</button>
@@ -72,7 +74,7 @@ export default {
 <style scoped>
 .link-dtl {
   width: 100%;
-  padding: 7px;
+  /*padding: 7px;*/
 }
 
 .link-dtl > div {
@@ -87,6 +89,7 @@ export default {
   margin: 1px 3px;
   border-radius: 5px;
   transition: 0.5s;
+  outline-color: transparent;
 }
 
 .option-btn:active {
@@ -107,6 +110,7 @@ div.gap-t {
 .panel {
   width: 50%;
   margin-top: 20px;
+  background-color: #ffeacf;
 }
 
 @media (max-width: 768px) {
