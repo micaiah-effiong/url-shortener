@@ -28,6 +28,7 @@ main > header {
   height: 7%;
   text-align: center;
 }
+
 main {
   height: 100vh;
 }
@@ -35,7 +36,6 @@ main {
 main > div {
   height: 93%;
   display: flex;
-  /*flex-wrap: wrap;*/
 }
 
 .sidebar {
@@ -47,5 +47,6 @@ main > div {
 .main-page {
   width: 100%;
   background-color: #f5f5f5;
+  overflow-y: scroll;
 }
 </style>
