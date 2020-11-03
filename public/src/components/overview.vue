@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <div class="chart-panel">
+    <div class="chart-panel mt-8 mr-auto ml-auto">
       <LineChart :chartdata="dataCollection" :options="chartOptions" />
     </div>
     <div class="card-panel">
@@ -78,7 +78,6 @@ export default {
 
 .chart-panel {
   width: 90%;
-  margin: auto;
 }
 
 @media (max-width: 650px) {
