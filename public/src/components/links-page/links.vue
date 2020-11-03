@@ -1,41 +1,33 @@
 <template>
-  <div class="flex">
-    <div class="link-dtl p-3">
-      <div style="font-size: 12px;">
-        <span> <time datetime="10-25-2020"> Sun Oct 25 2020</time></span>
-        | Micaiah Effiong
-      </div>
-      <div class="gap-t"><h3>The testing link</h3></div>
-      <p style="font-size: 1.5em; word-wrap: anywhere;">
-        http://ihsdckb.dfdsf.dfsdfnhs/csdf/fsfd
-      </p>
-      <div>http://reduce.com/temp-state</div>
-      <div class="mr-5">Total Clicks: 7</div>
-      <div>Top Referrer: twitter.com</div>
-      <div class="gap-t">
-        <button class="option-btn">EDIT</button>
-        <button class="option-btn">SHARE</button>
-        <button class="option-btn">MANAGE USER</button>
-        <button class="option-btn">QR CODE</button>
-      </div>
+  <div
+    class="relative"
+    style="width: 100% ;height: 100%; background-color: #f5f5f5;"
+  >
+    <div class="p-3">
+      <ul>
+        <li v-for="link in links" :key="link.slug">
+          <div>{{ link.slug }}</div>
+          <div>{{ link.url }}</div>
+          <div>{{ link.click }}</div>
+          <router-link :to="link.slug" append>View</router-link>
+        </li>
+      </ul>
+      <router-view></router-view>
     </div>
-    <ClicksPanel />
-    <ReferrersPanel />
   </div>
 </template>
 
 <script>
 // import axios from "axios";
-import ClicksPanel from "./clicks-panel";
-import ReferrersPanel from "./referrers-panel";
+// import LinkDetails from "./link-details";
 export default {
   name: "Links",
-  components: { ClicksPanel, ReferrersPanel },
+  // components: { LinkDetails },
   data() {
     return {
       links: [
         {
-          slug: "sdsfss",
+          slug: "khgj",
           createdAt: "2020-10-21T12:43:06.612Z",
           url: "www.google.com/afsdffdjfgh/dfnskug",
           clicks: 2,
@@ -47,13 +39,13 @@ export default {
           clicks: 4,
         },
         {
-          slug: "sdsfss",
+          slug: "cvbvn",
           createdAt: "2020-10-21T12:43:06.612Z",
           url: "www.google.com",
           clicks: 10,
         },
         {
-          slug: "sdsfss",
+          slug: "e45ew",
           createdAt: "2020-10-21T12:43:06.612Z",
           url: "www.google.com",
           clicks: 6,
@@ -70,52 +62,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.link-dtl {
-  width: 100%;
-  /*padding: 7px;*/
-}
-
-.link-dtl > div {
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-
-.option-btn {
-  background-color: #f5f5f5;
-  border: 1px solid #8bc34a;
-  padding: 1px 3px;
-  margin: 1px 3px;
-  border-radius: 5px;
-  transition: 0.5s;
-  outline-color: transparent;
-}
-
-.option-btn:active {
-  background-color: #8bc34a;
-  transition: 0.5s;
-}
-
-.flex {
-  display: flex;
-  /*height: 100%;*/
-  flex-wrap: wrap;
-}
-
-div.gap-t {
-  margin-top: 15px;
-}
-
-.panel {
-  width: 50%;
-  margin-top: 20px;
-  background-color: #ffeacf;
-}
-
-@media (max-width: 768px) {
-  .panel {
-    width: 100%;
-  }
-}
-</style>
