@@ -41,7 +41,8 @@
   },
   "nodemonConfig": {
     "ignore": [
-      "sessions"
+      "sessions",
+      "public"
     ]
   }
 }

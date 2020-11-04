@@ -7,7 +7,7 @@
       <div class="sidebar">
         <SideBar />
       </div>
-      <div class="main-page">
+      <div class="main-page relative">
         <router-view></router-view>
       </div>
     </div>

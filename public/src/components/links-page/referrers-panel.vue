@@ -1,8 +1,25 @@
 <template>
-  <div class="panel">
+  <div class="panel p-3">
     <div>📎Referres</div>
-    <PieChart :chartdata="dataCollection" :options="chartOptions" />
-    <div>Info here</div>
+    <div class="flex justify-evenly">
+      <div
+        style="width: 30%; background-color: #fff; border-radius: 6px;"
+        class="shadow p-3"
+      >
+        <ul>
+          <li>twitter.com</li>
+          <li>facebook.com</li>
+          <li>intergram.com</li>
+          <li>linked.in</li>
+        </ul>
+      </div>
+      <PieChart
+        class="p-3 ml-3 shadow"
+        style="width: 60%; background-color: #fff; border-radius: 6px;"
+        :chartdata="dataCollection"
+        :options="chartOptions"
+      />
+    </div>
   </div>
 </template>
 
@@ -19,9 +36,10 @@ export default {
         legend: {
           position: "bottom",
         },
+        cutoutPercentage: 55,
       },
       dataCollection: {
-        labels: ["1", "2", "3"],
+        labels: ["One", "Two", "Three"],
         datasets: [
           {
             data: [70, 50, 60],

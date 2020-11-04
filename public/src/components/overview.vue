@@ -1,13 +1,13 @@
 <template>
   <div class="">
+    <div class="chart-panel mt-8 mr-auto ml-auto">
+      <LineChart :chartdata="dataCollection" :options="chartOptions" />
+    </div>
     <div class="card-panel">
       <StatisticsCard :figure="200" text="Total clicks" />
       <StatisticsCard :figure="30" text="Total links" />
       <StatisticsCard :figure="60" text="Top referrer" />
       <StatisticsCard :figure="10" text="Top link" />
-    </div>
-    <div class="chart-panel">
-      <LineChart :chartdata="dataCollection" :options="chartOptions" />
     </div>
   </div>
 </template>
@@ -24,6 +24,18 @@ export default {
         legend: false,
         responsive: true,
         maintainAspectRatio: false,
+        scales: {
+          xAxes: [
+            {
+              gridLines: { display: false },
+            },
+          ],
+          yAxes: [
+            {
+              gridLines: { display: true },
+            },
+          ],
+        },
       },
       dataCollection: {
         labels: ["One", "Two", "Three"],
@@ -60,18 +72,18 @@ export default {
 .card-panel {
   padding: 3px 13px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   flex-wrap: wrap;
 }
 
 .chart-panel {
-  /*padding: 3px 13px;*/
-  margin: 3px 13px;
+  width: 90%;
 }
 
 @media (max-width: 650px) {
   .card-panel {
     flex-wrap: wrap;
+    /*justify-content: space-between;*/
   }
 }
 </style>
