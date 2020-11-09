@@ -41,7 +41,7 @@ main > div {
 .sidebar {
   width: 20%;
   position: relative;
-  background-color: #3949ab;
+  background-color: #3d68ff;
 }
 
 .main-page {

@@ -5,6 +5,7 @@
 </template>
 
 <script>
+
 import Dashboard from "./components/dashboard.vue";
 
 export default {
@@ -15,7 +16,6 @@ export default {
 };
 </script>
 
-<style src="./assets/css/tailwind.css"></style>
 
 <style>
 * {
