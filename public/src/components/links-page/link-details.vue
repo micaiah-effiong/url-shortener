@@ -1,43 +1,98 @@
 <template>
-  <div
-    class="absolute"
-    style="width: 100% ;height: 100%; background-color: #f5f5f5;"
-  >
-    <div class="flex relative">
-      <div class="link-dtl p-3">
-        <div>
-          <router-link to="/links/">-Back</router-link>
-        </div>
-        <div style="font-size: 12px;">
-          <span> <time datetime="10-25-2020"> Sun Oct 25 2020</time></span>
-          | Micaiah Effiong
-        </div>
-        <div class="gap-t"><h3>The testing link</h3></div>
-        <p style="font-size: 1.5em; word-wrap: anywhere;">
-          http://www.example.com/api/v1/products?price[lt]=3000
-        </p>
-        <div>http://reduce.com/temp-state</div>
-        <div class="mr-5">Total Clicks: 7</div>
-        <div>Top Referrer: twitter.com</div>
-        <div class="gap-t">
-          <router-link
-            to="edit"
-            append
-            class="option-btn"
-            role="button"
-            type="button"
-            >EDIT</router-link
-          >
-          <button class="option-btn">SHARE</button>
-          <button class="option-btn">MANAGE USER</button>
-          <button class="option-btn">QR CODE</button>
+  <section class="absolute mt-12 mx-4"
+      style="width: 100% ;height: 100%; background-color: #f5f5f5;">
+    <div
+      
+    >
+    <div class="flex flex-wrap -mx-6">
+      <div class="w-full px-6 sm:w-1/2 xl:w-1/3">
+        <div class="flex items-center px-5 py-6 shadow-sm rounded-md bg-white">
+          <div class="p-3 rounded-full bg-indigo-600 bg-opacity-75">
+       
+          </div>
+
+          <div class="mx-5">
+            <h4 class="text-2xl font-semibold text-gray-700">7</h4>
+            <div class="text-gray-500">Total Clicks</div>
+          </div>
         </div>
       </div>
-      <ClicksPanel />
-      <ReferrersPanel />
-      <router-view></router-view>
+
+      <div class="w-full mt-6 px-6 sm:w-1/2 xl:w-1/3 sm:mt-0">
+        <div class="flex items-center px-5 py-6 shadow-sm rounded-md bg-white">
+          <div class="p-3 rounded-full  bg-opacity-75">
+           <i class="fa fa-hand-o-right px-2" aria-hidden="true"></i>
+          </div>
+
+          <div class="mx-5">
+            <h4 class="text-2xl font-semibold text-gray-700">twitter.com</h4>
+            <div class="text-gray-500">Top Referrer</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="w-full mt-6 px-6 sm:w-1/2 xl:w-1/3 xl:mt-0">
+        <div class="flex items-center px-5 py-6 shadow-sm rounded-md bg-white">
+          <div class="p-3 rounded-full bg-pink-600 bg-opacity-75">
+          
+          </div>
+
+          <div class="mx-5">
+            <h4 class="text-2xl font-semibold text-gray-700">http://reduce.com</h4>
+            <div class="text-gray-500">The testing link</div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+      <div class="flex relative">
+        <div class="link-dtl p-3">
+          <div>
+            <router-link to="/links/">-Back</router-link>
+          </div>
+          <div style="font-size: 12px;">
+            <span> <time datetime="10-25-2020"> Sun Oct 25 2020</time></span>
+            | Micaiah Effiong
+          </div>
+          <!-- <div class="gap-t"><h3>The testing link</h3></div>
+          <p style="font-size: 1.5em; word-wrap: anywhere;">
+            http://www.example.com/api/v1/products?price[lt]=3000
+          </p>
+          <div>http://reduce.com/temp-state</div>
+          <div class="mr-5">Total Clicks: 7</div> -->
+          <!-- <div>Top Referrer: twitter.com</div> -->
+          <div class="gap-t">
+            <router-link
+              to="edit"
+              append
+              class="option-btn"
+              role="button"
+              type="button"
+              >EDIT</router-link
+            >
+            <button class="option-btn">SHARE</button>
+            <button class="option-btn">MANAGE USER</button>
+            <button class="option-btn">QR CODE</button>
+          </div>
+        </div>
+        <ClicksPanel />
+        <ReferrersPanel />
+        <router-view></router-view>
+      </div>
+    </div>
+
+  </section>
 </template>
 
 <script>
