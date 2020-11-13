@@ -9,6 +9,9 @@
           <table class="min-w-full bg-white">
             <thead class="bg-gray-800 text-white">
               <tr>
+                <th class="text-left py-3 px-4 uppercase font-semibold text-sm">
+                  S/N
+                </th>
                 <th
                   class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm"
                 >
@@ -22,20 +25,31 @@
                 <th class="text-left py-3 px-4 uppercase font-semibold text-sm">
                   Click
                 </th>
-                <th class="text-left py-3 px-4 uppercase font-semibold text-sm">
-                  View
-                </th>
               </tr>
             </thead>
-            <tbody class="text-gray-700" v-for="link in links" :key="link.slug">
+            <tbody
+              class="text-gray-700"
+              v-for="(link, index) in links"
+              :key="link.slug"
+            >
               <tr class="bg-gray-200">
-                <td class="w-1/3 text-left py-3 px-4">{{ link.slug }}</td>
-                <td class="w-1/3 text-left py-3 px-4">{{ link.url }}</td>
                 <td class="text-left py-3 px-4">
-                  {{ link.clicks }}
+                  <router-link :to="link.slug" append>{{ index }}</router-link>
+                </td>
+                <td class="w-1/3 text-left py-3 px-4">
+                  <router-link :to="link.slug" append>{{
+                    link.slug
+                  }}</router-link>
+                </td>
+                <td class="w-1/3 text-left py-3 px-4">
+                  <router-link :to="link.slug" append>{{
+                    link.url
+                  }}</router-link>
                 </td>
                 <td class="text-left py-3 px-4">
-                  <router-link :to="link.slug" append>View</router-link>
+                  <router-link :to="link.slug" append>{{
+                    link.clicks
+                  }}</router-link>
                 </td>
               </tr>
             </tbody>

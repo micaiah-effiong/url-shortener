@@ -1,9 +1,9 @@
 <template>
   <section
-    class="absolute mt-12 mx-4"
+    class="absolute mt-12"
     style="width: 100% ;height: 100%; background-color: #f5f5f5;"
   >
-    <div class="flex flex-wrap -mx-6">
+    <div class="flex flex-wrap">
       <div class="w-full px-6 sm:w-1/2 xl:w-1/3">
         <div class="flex items-center px-5 py-6 shadow-sm rounded-md bg-white">
           <div class="p-3 rounded-full bg-indigo-600 bg-opacity-75"></div>
