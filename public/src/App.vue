@@ -5,6 +5,7 @@
 </template>
 
 <script>
+
 import Dashboard from "./components/dashboard.vue";
 
 export default {
@@ -15,11 +16,11 @@ export default {
 };
 </script>
 
-<style src="./assets/css/tailwind.css"></style>
 
 <style>
+ @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
 * {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+   font-family: karla;
 }
 #app {
   -webkit-font-smoothing: antialiased;

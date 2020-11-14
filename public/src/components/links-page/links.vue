@@ -4,14 +4,58 @@
     style="width: 100% ;height: 100%; background-color: #f5f5f5;"
   >
     <div class="p-3">
-      <ul>
-        <li v-for="link in links" :key="link.slug">
-          <div>{{ link.slug }}</div>
-          <div>{{ link.url }}</div>
-          <div>{{ link.click }}</div>
-          <router-link :to="link.slug" append>View</router-link>
-        </li>
-      </ul>
+      <div class="bg-white overflow-auto">
+        <ul>
+          <table class="min-w-full bg-white">
+            <thead class="bg-gray-800 text-white">
+              <tr>
+                <th class="text-left py-3 px-4 uppercase font-semibold text-sm">
+                  S/N
+                </th>
+                <th
+                  class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm"
+                >
+                  Slug
+                </th>
+                <th
+                  class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm"
+                >
+                  Url
+                </th>
+                <th class="text-left py-3 px-4 uppercase font-semibold text-sm">
+                  Click
+                </th>
+              </tr>
+            </thead>
+            <tbody
+              class="text-gray-700"
+              v-for="(link, index) in links"
+              :key="link.slug"
+            >
+              <tr class="bg-gray-200">
+                <td class="text-left py-3 px-4">
+                  <router-link :to="link.slug" append>{{ index }}</router-link>
+                </td>
+                <td class="w-1/3 text-left py-3 px-4">
+                  <router-link :to="link.slug" append>{{
+                    link.slug
+                  }}</router-link>
+                </td>
+                <td class="w-1/3 text-left py-3 px-4">
+                  <router-link :to="link.slug" append>{{
+                    link.url
+                  }}</router-link>
+                </td>
+                <td class="text-left py-3 px-4">
+                  <router-link :to="link.slug" append>{{
+                    link.clicks
+                  }}</router-link>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </ul>
+      </div>
       <router-view></router-view>
     </div>
   </div>
@@ -29,7 +73,7 @@ export default {
         {
           slug: "khgj",
           createdAt: "2020-10-21T12:43:06.612Z",
-          url: "www.google.com/afsdffdjfgh/dfnskug",
+          url: "www.google.com",
           clicks: 2,
         },
         {
